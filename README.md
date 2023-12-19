@@ -1,3 +1,3 @@
 # strava-stats
 
-Welcome to Strava Stats! I refuse to pay for a Premium Strava membership, so here we are :)
+Welccome to my first project! I created annual analytics with my Strava data since I don't have a premium membership...
