@@ -1,5 +1,3 @@
 import streamlit as st
 
 st.write("Hello World:bike:")
-
-#uploadedFile = st.file_uploader(fileUploadLabel, type=['csv'],accept_multiple_files=False,key="fileUploader")
