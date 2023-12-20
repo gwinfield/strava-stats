@@ -55,7 +55,6 @@ if file != None:
     return new_df
 
   activities = transform_data(original_activities)
-  st.write(activities.head())
 
   tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
 
