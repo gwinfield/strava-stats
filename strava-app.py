@@ -23,11 +23,11 @@ if file != None:
 
 st.subheader("See your stats!")
 
-def km_to_mi(km):
-  return km*0.621371
+#def km_to_mi(km):
+  #return km*0.621371
 
-def sec_to_min(sec):
-  return sec/60
+#def sec_to_min(sec):
+  #return sec/60
   
 def transform_data(data):
   new_df = data[['Activity Date', 'Activity Type', 'Elapsed Time', 'Distance', 'Moving Time']]
