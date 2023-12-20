@@ -11,7 +11,8 @@ st.title("2023 Strava Statistics:athletic_shoe:")
 st.text("Welcome to (an unofficial form of) Strava Wrapped for 2023! Please enjoy your personalized dashboard.")
 
 st.subheader("Upload your actuvity data here!")
-st.text("Click here to learn how to download your data.\nOnce you've downloaded gthe zip file, download the activities.csv file.")
+st.text("Click [here](https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export)
+to learn how to download your data.\nOnce you've downloaded gthe zip file, download the activities.csv file.")
 
 file = st.file_uploader("Drop your activities file in a csv format", key="loader", type='csv')
 
