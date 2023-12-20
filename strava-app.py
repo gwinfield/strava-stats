@@ -23,24 +23,20 @@ if file != None:
 
 st.subheader("See your stats!")
   
-def transform_data(data):
-  new_df = data[['Activity Date', 'Activity Type', 'Elapsed Time', 'Distance', 'Moving Time']]
-  return new_df.head()
-
 def km_to_mi(km):
   return km*0.621371
 
 def sec_to_min(sec):
   return sec/60
   
-def conversions(data):
-  data['Distance'] = data['Distance'].apply(km_to_mi)
-  data['Elapsed Time'] = data['Elapsed Time'].apply(sec_to_min)
-  data['Moving Time'] = data['Moving Time'].apply(sec_to_min)
-  return data
+def transform_data(data):
+  new_df = data[['Activity Date', 'Activity Type', 'Elapsed Time', 'Distance', 'Moving Time']]
+  new_df['Distance'] = new_df['Distance'].apply(km_to_mi)
+  new_df['Elapsed Time'] = new_df['Elapsed Time'].apply(sec_to_min)
+  new_df['Moving Time'] = new_df['Moving Time'].apply(sec_to_min)
+  return new_df.head()
 
 activities = transform_data(original_activities)
-activities = conversions(activities)
 
 st.dataframe(data=activities)
 
