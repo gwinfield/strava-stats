@@ -21,11 +21,11 @@ if file != None:
   original_activities = pd.read_csv(file)
   st.write(original_activities)
 else:
-  original_activities = 0
+  original_activities = pd.dataframe()
 
 st.subheader("See your stats!")
 
-if original_activities != 0:
+if not original_activities.empty:
   def km_to_mi(km):
     return km*0.621371
 
@@ -61,7 +61,7 @@ if original_activities != 0:
   st.write(activities.head())
 
 else:
-  st.write(" ")
+  pass
 
 #activity_counts = activities['Activity Type'].value_counts()
 
