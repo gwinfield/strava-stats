@@ -29,12 +29,12 @@ def km_to_mi(km):
 def sec_to_min(sec):
   return sec/60
   
-def transform_data(df):
-  activities = df[['Activity Date', 'Activity Type', 'Elapsed Time', 'Distance', 'Moving Time']]
-  activities['Distance'] = activities['Distance'].apply(km_to_mi)
-  activities['Elapsed Time'] = activities['Elapsed Time'].apply(sec_to_min)
-  activities['Moving Time'] = activities['Moving Time'].apply(sec_to_min)
-  return activities
+def transform_data(data):
+  new_df = data[['Activity Date', 'Activity Type', 'Elapsed Time', 'Distance', 'Moving Time']]
+  new_df['Distance'] = new_df['Distance'].apply(km_to_mi)
+  new_df['Elapsed Time'] = new_df['Elapsed Time'].apply(sec_to_min)
+  new_df['Moving Time'] = new_df['Moving Time'].apply(sec_to_min)
+  return new_df
 
 activities = activities.apply(transform_data)
 
