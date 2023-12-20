@@ -8,10 +8,10 @@ st.set_page_config(
 )
 
 st.title("2023 Strava Statistics:athletic_shoe:")
-st.write("Welcome to (an unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard.\n")
+st.write("Welcome to your (unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard.\nAny questions or bugs? Email me at gwinfield@utexas.edu!")
 st.markdown("""---""")
 
-st.subheader("Upload your activity data here!")
+st.subheader("Upload your activity data")
 
 url = "https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export"
 st.markdown("How to download your data:\nMy Account >> Delete or download your account >> Get started >> Request your archive\nOnce you've received the zip file via email, extract all files and upload the activities.csv file onto this page!\nQuestions? Click [here](%s) to learn more." % url)
