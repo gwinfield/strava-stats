@@ -18,8 +18,8 @@ st.markdown("Click [here](%s) to learn how to download your data.\nOnce you've d
 file = st.file_uploader("Drop your activities file in a csv format", key="loader", type='csv')
 
 if file != None:
-  activities = pd.read_csv(file)
-  st.write(activities)
+  original_activities = pd.read_csv(file)
+  st.write(original_activities)
 
 st.subheader("See your stats!")
 
@@ -34,9 +34,9 @@ def transform_data(data):
   #new_df['Distance'] = new_df['Distance'].apply(km_to_mi)
   #new_df['Elapsed Time'] = new_df['Elapsed Time'].apply(sec_to_min)
   #new_df['Moving Time'] = new_df['Moving Time'].apply(sec_to_min)
-  return st.write(new_df.head())
+  return new_df.head()
 
-activities = activities.apply(transform_data)
+activities = transform_data(original_activities)
 
 st.dataframe(data=activities)
 
