@@ -58,8 +58,7 @@ def transform_data(data):
 
 if original_activities != 0:
   activities = transform_data(original_activities)
-
-st.write(activities.head())
+  st.write(activities.head())
 
 #activity_counts = activities['Activity Type'].value_counts()
 
