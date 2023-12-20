@@ -7,7 +7,9 @@ st.set_page_config(
 )
 
 st.title("2023 Strava Statistics:bike:")
-st.subheader("Welcome to (an unofficial form of) Strava Wrapped for 2023! PLease enjoy your personalized dashboard")
+st.write("Welcome to (an unofficial form of) Strava Wrapped for 2023! Please enjoy your personalized dashboard.")
+
+st.subheader("File Upload")
 
 file = st.file_uploader("Upload your Strava data is a .csv format!", key="loader", type='csv')
 
