@@ -4,6 +4,7 @@ import pandas as pd
 st.set_page_config(
   page_title = "Strava Stats",
   page_icon = ":bike:",
+  layout = "wide",
 )
 
 st.title("2023 Strava Statistics:athletic_shoe:")
