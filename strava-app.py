@@ -24,39 +24,39 @@ else:
   original_activities = 0
 
 st.subheader("See your stats!")
-  
-def km_to_mi(km):
-  return km*0.621371
-
-def sec_to_min(sec):
-  return sec/60
-  
-def transform_data(data):
-  #filter data for relevant columns
-  new_df = data[['Activity Date', 'Activity Type', 'Elapsed Time', 'Distance', 'Moving Time']]
-  
-  #apply conversion functions
-  new_df['Distance'] = new_df['Distance'].apply(km_to_mi)
-  new_df['Elapsed Time'] = new_df['Elapsed Time'].apply(sec_to_min)
-  new_df['Moving Time'] = new_df['Moving Time'].apply(sec_to_min)
-
-  #create date/time related columns
-  new_df['Activity Date'] = new_df['Activity Date'].astype(str)
-  new_df['Activity Date'] = pd.to_datetime(new_df['Activity Date'], format='%b %d, %Y, %I:%M:%S %p')
-  new_df['Day of the Week'] = new_df['Activity Date'].dt.day_name()
-  new_df['Month'] = new_df['Activity Date'].dt.month
-  new_df['Day'] = new_df['Activity Date'].dt.day
-  new_df['Year'] = new_df['Activity Date'].dt.year
-  new_df['Hour'] = new_df['Activity Date'].dt.hour
-  new_df = new_df.drop(columns=['Activity Date'])
-
-  #filter data by year
-  new_df = new_df.loc[new_df['Year'] == 2023]
-
-  #return transformed df
-  return new_df
 
 if original_activities != 0:
+  def km_to_mi(km):
+    return km*0.621371
+
+  def sec_to_min(sec):
+    return sec/60
+  
+  def transform_data(data):
+    #filter data for relevant columns
+    new_df = data[['Activity Date', 'Activity Type', 'Elapsed Time', 'Distance', 'Moving Time']]
+  
+    #apply conversion functions
+    new_df['Distance'] = new_df['Distance'].apply(km_to_mi)
+    new_df['Elapsed Time'] = new_df['Elapsed Time'].apply(sec_to_min)
+    new_df['Moving Time'] = new_df['Moving Time'].apply(sec_to_min)
+
+    #create date/time related columns
+    new_df['Activity Date'] = new_df['Activity Date'].astype(str)
+    new_df['Activity Date'] = pd.to_datetime(new_df['Activity Date'], format='%b %d, %Y, %I:%M:%S %p')
+    new_df['Day of the Week'] = new_df['Activity Date'].dt.day_name()
+    new_df['Month'] = new_df['Activity Date'].dt.month
+    new_df['Day'] = new_df['Activity Date'].dt.day
+    new_df['Year'] = new_df['Activity Date'].dt.year
+    new_df['Hour'] = new_df['Activity Date'].dt.hour
+    new_df = new_df.drop(columns=['Activity Date'])
+
+    #filter data by year
+    new_df = new_df.loc[new_df['Year'] == 2023]
+
+    #return transformed df
+    return new_df
+
   activities = transform_data(original_activities)
   st.write(activities.head())
 
