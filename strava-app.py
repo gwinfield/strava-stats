@@ -8,7 +8,7 @@ st.set_page_config(
 )
 
 st.title("2023 Strava Statistics:athletic_shoe:")
-st.write("Welcome to (an unofficial form of) Strava Wrapped for 2023! Please enjoy your personalized dashboard.\n")
+st.write("Welcome to (an unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard.\n")
 
 st.subheader("Upload your activity data here!")
 
