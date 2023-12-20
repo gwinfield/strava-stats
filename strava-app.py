@@ -17,10 +17,12 @@ url = "https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Dat
 st.markdown("Click [here](%s) to learn how to download your data.\nOnce you've downloaded the zip file, download the activities.csv file." % url)
 
 file = st.file_uploader(" ", key="loader", type='csv')
-original_activities = pd.read_csv(file)
-  #st.write(original_activities)
 
 if file != None:
+  
+  original_activities = pd.read_csv(file)
+  #st.write(original_activities)
+  
   st.markdown("""---""")
   st.subheader("See your stats!")
 
