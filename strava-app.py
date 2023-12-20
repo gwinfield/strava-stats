@@ -59,19 +59,30 @@ if file != None:
 
   activities = transform_data(original_activities)
 
-  tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
+  def create_tabs(data):
+    activities_list = data['Activity Type'].unique().tolist()
+    
+    filtered_activities = {}
+    for act in activities_list:
+      filtered_activities[act] = data.loc[activities2023['Activity Type'] == act].copy()
 
-  with tab1:
-    st.header("Count of Activity Types")
-    activity_counts = activities['Activity Type'].value_counts()
-    st.bar_chart(activity_counts)
+    for key in filtered_activities.keys():
+      st.tabs([key])
+      
+      
+  #tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
+
+  #with tab1:
+    #st.header("Count of Activity Types")
+    #activity_counts = activities['Activity Type'].value_counts()
+    #st.bar_chart(activity_counts)
      
-  with tab2:
-    st.header("Stats")
+  #with tab2:
+    #st.header("Stats")
 
-  with tab3:
-    st.header("Data Preview")
-    st.write(activities.head(15))
+  #with tab3:
+    #st.header("Data Preview")
+    #st.write(activities.head(15))
     
 else:
   pass
