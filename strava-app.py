@@ -40,6 +40,7 @@ def conversions(data):
   return data
 
 activities = transform_data(original_activities)
+activities = conversions(activities)
 
 st.dataframe(data=activities)
 
