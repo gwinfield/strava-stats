@@ -66,7 +66,7 @@ if file != None:
     for act in activities_list:
       filtered_activities[act] = data.loc[data['Activity Type'] == act].copy()
 
-    return st.tabs([f"{filtered_activities.keys()[0]}")
+    return st.tabs([f"{filtered_activities.keys()[0]}"])
 
   create_tabs(activities)
     
