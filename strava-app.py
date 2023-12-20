@@ -66,7 +66,11 @@ if file != None:
     for act in activities_list:
       filtered_activities[act] = data.loc[data['Activity Type'] == act].copy()
 
-    return st.tabs([f"{filtered_activities.keys()[0]}"])
+    for tab in st.tabs(activities_list):
+    with tab:
+        st.header(f"{tab}")
+
+    pass
 
   create_tabs(activities)
     
