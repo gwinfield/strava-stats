@@ -45,10 +45,9 @@ if file != None:
     new_df['Activity Date'] = new_df['Activity Date'].astype(str)
     new_df['Activity Date'] = pd.to_datetime(new_df['Activity Date'], format='%b %d, %Y, %I:%M:%S %p')
     new_df['Day of the Week'] = new_df['Activity Date'].dt.day_name()
-    new_df['Month'] = new_df['Activity Date'].dt.month
+    new_df['Month'] = new_df['Activity Date'].dt.month_name
     new_df['Day'] = new_df['Activity Date'].dt.day
     new_df['Year'] = new_df['Activity Date'].dt.year
-    new_df['Hour'] = new_df['Activity Date'].dt.hour
     new_df = new_df.drop(columns=['Activity Date'])
 
     #filter data by year
