@@ -69,8 +69,11 @@ if file != None:
     return st.tabs([f"{filtered_activities.keys()[0]}")
 
   create_tabs(activities)
-     
-  #for key in filtered_activities.keys():
+    
+else:
+  pass
+
+ #for key in filtered_activities.keys():
       #st.tabs([key])
 
   #tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
@@ -86,9 +89,6 @@ if file != None:
   #with tab3:
     #st.header("Data Preview")
     #st.write(activities.head(15))
-    
-else:
-  pass
 
 #activity_counts = activities['Activity Type'].value_counts()
 
