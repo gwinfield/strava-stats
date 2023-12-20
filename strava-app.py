@@ -17,15 +17,12 @@ st.markdown("Click [here](%s) to learn how to download your data.\nOnce you've d
 
 file = st.file_uploader("Drop your activities file in a csv format", key="loader", type='csv')
 
+st.subheader("See your stats!")
+
 if file != None:
   original_activities = pd.read_csv(file)
   st.write(original_activities)
-else:
-  original_activities = 0
 
-st.subheader("See your stats!")
-
-if not original_activities.empty:
   def km_to_mi(km):
     return km*0.621371
 
