@@ -21,7 +21,7 @@ if file != None:
   original_activities = pd.read_csv(file)
   st.write(original_activities)
 else:
-  original_activities = pd.dataframe()
+  original_activities = 0
 
 st.subheader("See your stats!")
 
