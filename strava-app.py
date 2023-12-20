@@ -40,7 +40,7 @@ activities = transform_data(original_activities)
 
 activity_counts = activities['Activity Type'].value_counts()
 
-st.bar_chart(data=activity_counts, x=activity_counts.index, y=activity_counts.values)
+st.bar_chart(activity_counts)
 
 
 #st.dataframe(data=activities)
