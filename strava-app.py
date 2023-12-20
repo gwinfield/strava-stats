@@ -68,6 +68,10 @@ if file != None:
 
     for key in filtered_activities.keys():
       st.tabs([key])
+
+    pass
+
+  create_tabs(activities)
       
       
   #tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
