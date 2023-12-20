@@ -61,15 +61,11 @@ if file != None:
 
   def create_tabs(data):
     activities_list = data['Activity Type'].unique().tolist()
-    
-    filtered_activities = {}
-    for act in activities_list:
-      filtered_activities[act] = data.loc[data['Activity Type'] == act].copy()
 
     for tab in st.tabs(activities_list):
-    with tab:
-        st.header(f"{tab}")
-
+      with tab:
+        st.text("Hello world")
+    
     pass
 
   create_tabs(activities)
@@ -77,7 +73,11 @@ if file != None:
 else:
   pass
 
- #for key in filtered_activities.keys():
+ #filtered_activities = {}
+    #for act in activities_list:
+      #filtered_activities[act] = data.loc[data['Activity Type'] == act].copy())
+      
+#for key in filtered_activities.keys():
       #st.tabs([key])
 
   #tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
