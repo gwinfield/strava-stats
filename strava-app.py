@@ -38,7 +38,9 @@ def transform_data(data):
 
 activities = transform_data(original_activities)
 
-st.dataframe(data=activities)
+st.barchart(data=activities, x='Activity Type', y='Activity Type'.value_counts())
+
+#st.dataframe(data=activities)
 
 #[theme]
 #primaryColor = '#fc4c02'
