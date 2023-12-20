@@ -56,9 +56,11 @@ def transform_data(data):
 
 activities = transform_data(original_activities)
 
-activity_counts = activities['Activity Type'].value_counts()
+st.write(activities.head())
 
-st.bar_chart(activity_counts)
+#activity_counts = activities['Activity Type'].value_counts()
+
+#st.bar_chart(activity_counts)
 
 
 #st.dataframe(data=activities)
