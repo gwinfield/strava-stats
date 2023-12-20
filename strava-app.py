@@ -20,11 +20,24 @@ file = st.file_uploader("Drop your activities file in a csv format", key="loader
 if file != None:
   activities = pd.read_csv(file)
   st.write(activities)
-else:
-  activities = pd.Data_Frame()
 
 st.subheader("See your stats!")
 
+def km_to_mi(km):
+  return km*0.621371
+
+def sec_to_min(sec):
+  return sec/60
+  
+def transform_data(df):
+  activities = df[['Activity Date', 'Activity Type', 'Elapsed Time', 'Distance', 'Moving Time']]
+  activities['Distance'] = activities['Distance'].apply(km_to_mi)
+  activities['Elapsed Time'] = activities['Elapsed Time'].apply(sec_to_min)
+  activities['Moving Time'] = activities['Moving Time'].apply(sec_to_min)
+  return activities
+
+transform_data(activities)
+  
 st.dataframe(data=activities)
 
 #[theme]
