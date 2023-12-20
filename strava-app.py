@@ -34,7 +34,7 @@ def transform_data(data):
   #new_df['Distance'] = new_df['Distance'].apply(km_to_mi)
   #new_df['Elapsed Time'] = new_df['Elapsed Time'].apply(sec_to_min)
   #new_df['Moving Time'] = new_df['Moving Time'].apply(sec_to_min)
-  pass
+  return st.write(new_df.head())
 
 activities = activities.apply(transform_data)
 
