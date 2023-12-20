@@ -18,12 +18,14 @@ st.markdown("Click [here](%s) to learn how to download your data.\nOnce you've d
 file = st.file_uploader("Drop your activities file in a csv format", key="loader", type='csv')
 
 if file != None:
-  df = pd.read_csv(file)
-  st.write(df)
+  activities = pd.read_csv(file)
+  st.write(activities)
+else:
+  activities = pd.Data_Frame()
 
 st.subheader("See your stats!")
 
-
+st.dataframe(data=activities)
 
 #[theme]
 #primaryColor = '#fc4c02'
