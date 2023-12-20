@@ -20,6 +20,8 @@ file = st.file_uploader("Drop your activities file in a csv format", key="loader
 if file != None:
   original_activities = pd.read_csv(file)
   st.write(original_activities)
+else:
+  original_activities = 0
 
 st.subheader("See your stats!")
   
@@ -54,7 +56,8 @@ def transform_data(data):
   #return transformed df
   return new_df
 
-activities = transform_data(original_activities)
+if original_activities != 0:
+  activities = transform_data(original_activities)
 
 st.write(activities.head())
 
