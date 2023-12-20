@@ -21,6 +21,8 @@ if file != None:
   df = pd.read_csv(file)
   st.write(df)
 
+st.subheader("See your stats!")
+
 
 
 #[theme]
