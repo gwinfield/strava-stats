@@ -25,6 +25,8 @@ else:
 
 st.subheader("See your stats!")
 
+st.dataframe(data=activities)
+
 #[theme]
 #primaryColor = '#fc4c02'
 #backgroundColor = '#ffffff'
