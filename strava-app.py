@@ -1,16 +1,20 @@
+#import libraries
 import streamlit as st
 import pandas as pd
 
+#configure streamlit app
 st.set_page_config(
   page_title = "Strava Stats",
   page_icon = ":bike:",
   layout = "wide",
 )
 
+#create title & inital note
 st.title("2023 Strava Statistics:athletic_shoe:")
 st.write("Welcome to your (unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard.\nAny questions or bugs? Email me at gwinfield@utexas.edu!")
 st.markdown("""---""")
 
+#give user place to upload their activity data & explain the process
 st.subheader("Upload your activity data")
 
 url = "https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export"
@@ -18,6 +22,7 @@ st.markdown("How to download your data:\nMy Account >> Delete or download your a
 
 file = st.file_uploader(" ", key="loader", type='csv')
 
+#once uploaded, this is where the magic happens
 if file != None:
   
   original_activities = pd.read_csv(file)
