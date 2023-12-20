@@ -35,10 +35,8 @@ def transform_data(df):
   activities['Elapsed Time'] = activities['Elapsed Time'].apply(sec_to_min)
   activities['Moving Time'] = activities['Moving Time'].apply(sec_to_min)
   return activities
-
-transform_data(activities)
   
-st.dataframe(data=activities)
+st.dataframe(data=activities.DataFrame.apply(transform_data))
 
 #[theme]
 #primaryColor = '#fc4c02'
