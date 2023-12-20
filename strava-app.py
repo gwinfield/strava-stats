@@ -13,7 +13,6 @@ st.text("Welcome to (an unofficial form of) Strava Wrapped for 2023! Please enjo
 st.subheader("Upload your actuvity data here!")
 
 url = "https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export"
-st.text("Click [here](%s) to learn how to download your data." % url)
 st.markdown("Click [here](%s) to learn how to download your data." % url)
 
 st.text("Once you've downloaded gthe zip file, download the activities.csv file.")
