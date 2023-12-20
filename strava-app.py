@@ -12,12 +12,12 @@ st.write("Welcome to (an unofficial form of) Strava Wrapped. Please enjoy your p
 st.markdown("""---""")
 
 st.subheader("Upload your activity data here!")
-st.markdown("""---""")
 
 url = "https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export"
 st.markdown("Click [here](%s) to learn how to download your data.\nOnce you've downloaded the zip file, download the activities.csv file." % url)
 
 file = st.file_uploader("Drop your activities file in a csv format", key="loader", type='csv')
+st.markdown("""---""")
 
 st.subheader("See your stats!")
 
