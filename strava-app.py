@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.st_page_config(
+st.set_page_config(
   page_title = "Strava Stats",
   page_icon = ":bike:",
 )
