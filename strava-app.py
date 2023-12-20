@@ -32,9 +32,6 @@ def sec_to_min(sec):
 def transform_data(data):
   #filter data for relevant columns
   new_df = data[['Activity Date', 'Activity Type', 'Elapsed Time', 'Distance', 'Moving Time']]
- 
-  #filter data by year
-  new_df = new_df.loc[new_df['Year'] == 2023]
   
   #apply conversion functions
   new_df['Distance'] = new_df['Distance'].apply(km_to_mi)
@@ -50,6 +47,9 @@ def transform_data(data):
   new_df['Year'] = new_df['Activity Date'].dt.year
   new_df['Hour'] = new_df['Activity Date'].dt.hour
   new_df = new_df.drop(columns=['Activity Date'])
+
+  #filter data by year
+  new_df = new_df.loc[new_df['Year'] == 2023]
 
   #return transformed df
   return new_df
