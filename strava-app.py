@@ -70,7 +70,7 @@ if file != None:
 
   with tab3:
     st.header("Data Preview")
-    st.write(activities)
+    st.write(activities.head(15))
     
 else:
   pass
