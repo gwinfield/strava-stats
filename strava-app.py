@@ -60,6 +60,9 @@ if original_activities != 0:
   activities = transform_data(original_activities)
   st.write(activities.head())
 
+else:
+  st.write(" ")
+
 #activity_counts = activities['Activity Type'].value_counts()
 
 #st.bar_chart(activity_counts)
