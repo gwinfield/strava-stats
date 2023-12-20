@@ -2,9 +2,7 @@ import streamlit as st
 import pandas as pd
 
 st.title("2023 Strava Statistics:bike:")
-
-with st.container():
-  st.subheader("Welcome to (an unofficial form of) Strava Wrapped for 2023! PLease enjoy your personalized dashboard")
+st.subheader("Welcome to (an unofficial form of) Strava Wrapped for 2023! PLease enjoy your personalized dashboard")
 
 file = st.file_uploader("Upload your Strava data is a .csv format!", key="loader", type='csv')
 
