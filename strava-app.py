@@ -6,7 +6,7 @@ st.set_page_config(
   page_icon = ":bike:",
 )
 
-st.title("2023 Strava Statistics:bike:")
+st.title("2023 Strava Statistics:athletic_shoe:")
 st.write("Welcome to (an unofficial form of) Strava Wrapped for 2023! Please enjoy your personalized dashboard.")
 
 st.subheader("File Upload")
