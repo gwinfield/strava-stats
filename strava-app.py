@@ -57,6 +57,20 @@ if file != None:
   activities = transform_data(original_activities)
   st.write(activities.head())
 
+  tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
+
+  with tab1:
+    st.header("Count of Activity Types")
+    activity_counts = activities['Activity Type'].value_counts()
+    st.bar_chart(activity_counts)
+     
+  with tab2:
+    st.header("Stats")
+
+  with tab3:
+    st.header("Data Preview")
+    st.write(activities.head())
+    
 else:
   pass
 
