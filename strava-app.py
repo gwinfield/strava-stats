@@ -21,7 +21,7 @@ st.subheader("See your stats!")
 
 if file != None:
   original_activities = pd.read_csv(file)
-  st.write(original_activities)
+  #st.write(original_activities)
 
   def km_to_mi(km):
     return km*0.621371
