@@ -39,7 +39,7 @@ if file != None:
   def km_to_mi(km):
     return km*0.621371
 
-  def sec_to_hr(sec):
+  def sec_to_min(sec):
       return sec / 60
   
   def transform_data(data):
@@ -48,8 +48,8 @@ if file != None:
   
     #apply conversion functions
     new_df['Distance'] = new_df['Distance'].apply(km_to_mi)
-    new_df['Elapsed Time'] = new_df['Elapsed Time'].apply(sec_to_hr)
-    new_df['Moving Time'] = new_df['Moving Time'].apply(sec_to_hr)
+    new_df['Elapsed Time'] = new_df['Elapsed Time'].apply(sec_to_min)
+    new_df['Moving Time'] = new_df['Moving Time'].apply(sec_to_min)
 
     #create date/time related columns
     new_df['Activity Date'] = new_df['Activity Date'].astype(str)
@@ -79,8 +79,8 @@ if file != None:
       #total_time =
       #total_sessions =
       if "Ride" in activity or "Run" in activity:
-        avg_pace = filtered_activities[activity]["Moving Time"].sum() / filtered_activities[activity]["Distance"].sum()
-        st.write(avg_pace)
+        avg_pace = filtered_activities[activity]["Distance"].sum() / filtered_activities[activity]["Moving Time"].sum()
+        st.write(avg_pace*60)
       
       col1, col2 = st.columns(2)
       
