@@ -101,8 +101,8 @@ if file != None:
     return st.bar_chart(month_counts, color=["#1ebbd7"])
 
 
-  activities_list = activities['Activity Type'].unique().tolist().insert(0, "All Activities")
-  #activities_list.insert(0, "All Activities")
+  activities_list = activities['Activity Type'].unique().tolist()
+  activities_list.insert(0, "All Activities")
   activity_tabs = st.tabs(activities_list)
   filtered_activities = {}
   
