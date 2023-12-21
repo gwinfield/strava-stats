@@ -72,9 +72,9 @@ if file != None:
   tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
 
   st.sidebar.header("Filter the graphs, stats, and data here")
-  month = st.sidebar.multiselect("Month:", options = activities["Month"].unique(), default=activities["Month"].unique())
-  dotw = st.sidebar.multiselect("Day of the Week:", options = activities["Day of the Week"].unique(), default=activities["Day of the Week"].unique())
-  month = st.sidebar.multiselect("Activity Type:", options = activities["Activity Type"].unique(), default=activities["Activity Type"].unique())
+  month = st.sidebar.selectbox("Month:", options = activities["Month"].unique())
+  dotw = st.sidebar.selectbox("Day of the Week:", options = activities["Day of the Week"].unique())
+  month = st.sidebar.selectbox("Activity Type:", options = activities["Activity Type"].unique())
 
   with tab1:
     st.header("Count of Activity Types")
