@@ -1,6 +1,9 @@
+pip3 install varname
+
 #import libraries
 import streamlit as st
 import pandas as pd
+import varname as nameof
 
 #configure streamlit app
 st.set_page_config(
@@ -75,6 +78,10 @@ if file != None:
   for activity, tab in zip(activities_list, activity_tabs):
     with tab:
       filtered_activities[activity] = activities.loc[activities['Activity Type'] == activity].copy()
+      st.subheader("Relevant Statistics")
+      total_time =
+      total_sessions =
+      if "ride" in activity.
       
       col1, col2 = st.columns(2)
       
