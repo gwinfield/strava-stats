@@ -68,7 +68,7 @@ if file != None:
 
   activities = transform_data(original_activities)
 
-  tab1, tab2, tab3 = st.tabs(["Number of Activities by Month", "Time Spent", "Data"])
+  tab1, tab2, tab3, tab4 = st.tabs(["Relevent Stats", "Number of Activities by Month", "Time Spent by Month", "Data Preview"])
 
   st.sidebar.header("Apply filters here")
   activity = st.sidebar.multiselect("Activity Type:", options = activities["Activity Type"].unique(), default = activities["Activity Type"].unique())
@@ -76,15 +76,18 @@ if file != None:
   activities_filtered = activities.query("`Activity Type` == @activity")
 
   with tab1:
+    st.header("Relevant Stats")
+      
+  with tab2:
     st.header("Count by Month")
     month_counts = activities_filtered['Month'].value_counts()
     st.bar_chart(month_counts, color=["#fc4c02"])
      
-  with tab2:
-    st.header("Stats")
-    st.write(month_counts.head(15))
-
   with tab3:
+    st.header("Time Spent by Month")
+    st.bar_chart(activities_filtered, x=["Month"], y=["Elapsed Time"], color=["#fc4c02"])
+
+  with tab4:
     st.header("Data Preview")
     st.write(activities_filtered.head(15))
     
