@@ -136,21 +136,21 @@ if file != None:
           sessions_per_month_graph(filtered_activities[activity])
           total_sessions(filtered_activities[activity])
 
-    else:
-      col1, col2 = st.columns(2)
+      else:
+        col1, col2 = st.columns(2)
       
-      with col1:
-        #time per month graph
-        time_per_month_graph(activities)
-        total_time(activities)
+        with col1:
+          #time per month graph
+          time_per_month_graph(activities)
+          total_time(activities)
         
-      with col2:
-        #count per month graph
-        sessions_per_month_graph(activities)
-        total_sessions(activities)
+        with col2:
+          #count per month graph
+          sessions_per_month_graph(activities)
+          total_sessions(activities)
 
-  else:
-    pass
+    else:
+      pass
       
 else:
   pass
