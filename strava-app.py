@@ -76,31 +76,23 @@ if file != None:
     with tab:
       filtered_activities[activity] = activities.loc[activities['Activity Type'] == activity].copy()
       st.subheader("Relevant Statistics")
-      total_time = filtered_activities[activity]["Elapsed Time"].sum() / 60
-      st.write(f"Total Time: {round(total_time, 2)} hours")
-      sessions = len(filtered_activities[activity].index)
-      st.write(f"Number of Sessions: {sessions}")
-      avg_session = total_time / sessions
-      sess_min = int((avg_session % 1) * 60)
-      if avg_session < 1:
-          st.write(f"Average Session Length: {sess_min} minutes")
-      else:
-        sess_hrs = int(avg_session // 1)
-        st.write(f"Average Session Length: {sess_hrs} hours and {sess_min} minutes")
       
       if "Ride" in activity:
         avg_pace = filtered_activities[activity]["Distance"].sum() / filtered_activities[activity]["Moving Time"].sum()
         st.write(f"Average Pace: {round(avg_pace*60, 2)} mph")
+        st.markdown("""---""")
       if "Run" in activity:
         avg_mile_time = filtered_activities[activity]["Moving Time"].sum() / filtered_activities[activity]["Distance"].sum()
         run_minutes = int(avg_mile_time // 1)
         run_seconds = int((avg_mile_time % 1) * 60)
         st.write(f"Average Mile Time: {run_minutes}:{run_seconds:02d}")
-        
+        st.markdown("""---""")
       
       col1, col2 = st.columns(2)
       
       with col1:
+        total_time = filtered_activities[activity]["Elapsed Time"].sum() / 60
+        st.write(f"Total Time: {round(total_time, 2)} hours")
         #time per month graph
         st.subheader("Time (in hrs) Spent by Month")
         filtered_activities[activity]["Elapsed Time"] = filtered_activities[activity]["Elapsed Time"]
@@ -109,6 +101,15 @@ if file != None:
         #st.dataframe(data=filtered_activities[activity])
 
       with col2:
+        sessions = len(filtered_activities[activity].index)
+        st.write(f"Number of Sessions: {sessions}")
+        avg_session = total_time / sessions
+        sess_min = int((avg_session % 1) * 60)
+        if avg_session < 1:
+            st.write(f"Average Session Length: {sess_min} minutes")
+        else:
+          sess_hrs = int(avg_session // 1)
+          st.write(f"Average Session Length: {sess_hrs} hours and {sess_min} minutes")
         #count per month graph
         st.subheader("Count by Month")
         month_counts = filtered_activities[activity]['Month'].value_counts()
