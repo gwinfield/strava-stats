@@ -75,8 +75,8 @@ if file != None:
 
     for activity, tab in zip(activities_list, activity_tabs):
       with tab:
-        filtered_activities[activity] = data.loc[data['Activity Type'] == activity].copy()
-        st.dataframe(data=filtered_activities[activity])
+        data[activity] = data.loc[data['Activity Type'] == activity].copy()
+        st.dataframe(data=data[activity])
 
   create_tabs(activities)
       
