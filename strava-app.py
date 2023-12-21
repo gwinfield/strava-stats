@@ -72,13 +72,15 @@ if file != None:
   tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
 
   st.sidebar.header("Apply filters here")
-  month = st.sidebar.selectbox("Month:", options = activities["Month"].unique())
-  dotw = st.sidebar.selectbox("Day of the Week:", options = activities["Day of the Week"].unique())
-  month = st.sidebar.selectbox("Activity Type:", options = activities["Activity Type"].unique())
+  month = st.sidebar.multiselect("Month:", options = activities["Month"].unique(), "Month:", default = activities["Month"].unique())
+  dotw = st.sidebar.multiselect("Day of the Week:", options = activities["Day of the Week"].unique(), "Day of the Week:", default = activities["Day of the Week"].unique())
+  activity = st.sidebar.multiselect("Activity Type:", options = activities["Activity Type"].unique(), default = activities["Activity Type"].unique())
+
+  activities_filtered = activities.query("Month == @month & DOTW == @dotw & Activity == @activity")
 
   with tab1:
     st.header("Count of Activity Types")
-    activity_counts = activities['Activity Type'].value_counts()
+    activity_counts = activities_filtered['Activity Type'].value_counts()
     st.bar_chart(activity_counts)
      
   with tab2:
@@ -86,7 +88,7 @@ if file != None:
 
   with tab3:
     st.header("Data Preview")
-    st.write(activities.head(15))
+    st.write(activities_filtered.head(15))
     
 else:
   pass
