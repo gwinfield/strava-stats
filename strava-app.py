@@ -92,7 +92,7 @@ if file != None:
 
   def time_per_month_graph(data):
     st.subheader("Time (in hrs) Spent by Month")
-    time_by_month = data.groupby("Month")["Elapsed Time"].sum()
+    time_by_month = data.groupby("Month")["Elapsed Time"].sum().reset_index()
     #return st.bar_chart(time_by_month, color=["#fc4c02"])
     time_by_month["Elapsed Time (hrs)"] = time_by_month["Elapsed Time"] / 60
     return st.bar_chart(time_by_month.set_index("Month")["Elapsed Time (hrs)"], color="#fc4c02")
