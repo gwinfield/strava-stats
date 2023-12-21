@@ -40,10 +40,7 @@ if file != None:
     return km*0.621371
 
   def sec_to_hr(sec):
-    if sec != 0:
-        return sec / 3600
-    else:
-        return 0
+      return sec / 60
   
   def transform_data(data):
     #filter data for relevant columns
