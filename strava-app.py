@@ -76,7 +76,7 @@ if file != None:
     if avg_session < 1:
       return st.write(f"Average Session Length: {minutes} minutes")
     else:
-      sess_hrs = int(avg_session // 1)
+      hrs = int(avg_session // 1)
       return st.write(f"Average Session Length: {hrs} hours and {minutes} minutes")
       
   def total_sessions(data):
