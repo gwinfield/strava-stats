@@ -85,7 +85,7 @@ if file != None:
      
   with tab3:
     st.header("Time Spent by Month")
-    time_by_month = activities_filtered.groupby("Month")["Elapsed Time"].mean()
+    time_by_month = activities_filtered.groupby("Month")["Elapsed Time"].sum()
     st.write(time_by_month.head(5))
     #st.bar_chart(time_by_month, x=["Month"], y=["Elapsed Time"], color=["#fc4c02"])
 
