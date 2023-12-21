@@ -71,7 +71,7 @@ if file != None:
 
   def avg_session(data):
     sessions = len(data.index)
-    total_time = data["Elapsed Time"].sum() / 60
+    total_time = data["Elapsed Time"].sum() #in min
     avg_session = total_time / sessions
     minutes = int((avg_session % 1) * 60)
     
