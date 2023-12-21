@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 #create title & inital note
-st.title("TEST 2023 Strava Statistics:athletic_shoe:")
+st.title("2023 Strava Statistics:athletic_shoe:")
 st.write("Welcome to your (unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard! Any questions or bugs? Email me at gwinfield@utexas.edu!")
 st.markdown("""---""")
 
@@ -112,7 +112,7 @@ if file != None:
         #count per month graph
         st.subheader("Count by Month")
         month_counts = filtered_activities[activity]['Month'].value_counts()
-        st.bar_chart(month_counts, color=["#fc4c02"])
+        st.bar_chart(month_counts, color=["#1ebbd7"])
 
       
 else:
