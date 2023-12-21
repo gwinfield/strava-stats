@@ -72,9 +72,9 @@ if file != None:
     activities_list = data['Activity Type'].unique().tolist()
     filtered_activities = {}
 
-     for tab in st.tabs(activities_list):
-       filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
-       st.dataframe(data=filtered_activities[tab])
+    for tab in st.tabs(activities_list):
+      filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
+      st.dataframe(data=filtered_activities[tab])
 
   create_tabs(activities)
       
