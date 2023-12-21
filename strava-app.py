@@ -84,8 +84,8 @@ if file != None:
       if "Run" in activity:
         avg_mile_time = filtered_activities[activity]["Moving Time"].sum() / filtered_activities[activity]["Distance"].sum()
         minutes = int(avg_mile_time // 1)
-        seconds = (avg_mile_time % 1) * 60
-        st.write(f"Average Mile Time: {minutes}:{seconds}")
+        seconds = int((avg_mile_time % 1) * 60)
+        st.write(f"Average Mile Time: {minutes}:{seconds:02d}")
         
       
       col1, col2 = st.columns(2)
