@@ -81,7 +81,7 @@ if file != None:
       st.write("Time in hours")
       filtered_activities[activity]["Elapsed Time"] = filtered_activities[activity]["Elapsed Time"] / 60
       time_by_month = filtered_activities[activity].groupby("Month")["Elapsed Time"].sum()
-      st.bar_chart(time_by_month, color=["#fc4c02"])
+      st.line_chart(time_by_month, color=["#fc4c02"])
       #st.dataframe(data=filtered_activities[activity])
 
       #count per month graph
