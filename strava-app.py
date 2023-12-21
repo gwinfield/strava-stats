@@ -78,9 +78,15 @@ if file != None:
       st.subheader("Relevant Statistics")
       #total_time =
       #total_sessions =
-      if "Ride" in activity or "Run" in activity:
+      if "Ride" in activity:
         avg_pace = filtered_activities[activity]["Distance"].sum() / filtered_activities[activity]["Moving Time"].sum()
-        st.write(f"Average Pace: {round(avg_pace*60, 2)}")
+        st.write(f"Average Pace: {round(avg_pace*60, 2)} mph.")
+      if "Run" in activity:
+        avg_mile_time = filtered_activities[activity]["Moving Time"].sum() / filtered_activities[activity]["Distance"].sum()
+        minutes = avg_mile_tine // 1
+        seconds = (avg_mile_time % 1) * 60
+        st.write(f"Average Mile Time: {minutes} minutes and {round(seconds)} seconds.")
+        
       
       col1, col2 = st.columns(2)
       
