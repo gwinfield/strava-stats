@@ -80,7 +80,7 @@ if file != None:
       #total_sessions =
       if "Ride" in activity or "Run" in activity:
         avg_pace = filtered_activities[activity]["Distance"].sum() / filtered_activities[activity]["Moving Time"].sum()
-        st.write(avg_pace*60)
+        st.write(f"Average Pace: {avg_pace*60}")
       
       col1, col2 = st.columns(2)
       
