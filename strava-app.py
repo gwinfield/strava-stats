@@ -1,7 +1,6 @@
 #import libraries
 import streamlit as st
 import pandas as pd
-import calendar as cal
 
 #configure streamlit app
 st.set_page_config(
@@ -11,7 +10,7 @@ st.set_page_config(
 )
 
 #create title & inital note
-st.title(" TEST 2023 Strava Statistics:athletic_shoe:")
+st.title("2023 Strava Statistics:athletic_shoe:")
 st.write("Welcome to your (unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard! Any questions or bugs? Email me at gwinfield@utexas.edu!")
 st.markdown("""---""")
 
