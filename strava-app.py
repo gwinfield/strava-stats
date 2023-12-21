@@ -72,21 +72,32 @@ if file != None:
   activity_tabs = st.tabs(activities_list)
   filtered_activities = {}
 
+   def avg_session(data):
+    sessions = len(data.index)
+    total_time = data["Elapsed Time"].sum() / 60
+    avg_session = total_time / sessions
+    minutes = int((avg_session % 1) * 60)
+    if avg_session < 1:
+      return st.write(f"Average Session Length: {minutes} minutes")
+    else:
+      sess_hrs = int(avg_session // 1)
+      return st.write(f"Average Session Length: {hrs} hours and {minutes} minutes")
+      
+  def total_sessions(data):
+    sessions = len(data.index)
+    return st.write(f"Number of Sessions: {sessions}")
+
+  def total_time(data):
+    total_time = data["Elapsed Time"].sum() / 60
+    return st.write(f"Total Time: {round(total_time, 2)} hours")
+
+  
   for activity, tab in zip(activities_list, activity_tabs):
     with tab:
       filtered_activities[activity] = activities.loc[activities['Activity Type'] == activity].copy()
       st.header("Relevant Statsitics")
-      
-      sessions = len(filtered_activities[activity].index)
-      total_time = filtered_activities[activity]["Elapsed Time"].sum() / 60
-      
-      avg_session = total_time / sessions
-      sess_min = int((avg_session % 1) * 60)
-      if avg_session < 1:
-          st.write(f"Average Session Length: {sess_min} minutes")
-      else:
-        sess_hrs = int(avg_session // 1)
-        st.write(f"Average Session Length: {sess_hrs} hours and {sess_min} minutes")
+
+    avg_session(filtered_activities[activity])
       
       if "Ride" in activity:
         avg_pace = filtered_activities[activity]["Distance"].sum() / filtered_activities[activity]["Moving Time"].sum()
@@ -108,17 +119,16 @@ if file != None:
         filtered_activities[activity]["Elapsed Time"] = filtered_activities[activity]["Elapsed Time"]
         time_by_month = filtered_activities[activity].groupby("Month")["Elapsed Time"].sum()
         st.bar_chart(time_by_month, color=["#fc4c02"])
-        
-        st.write(f"Total Time: {round(total_time, 2)} hours")
 
+        total_time(filtered_activities[activity])
+        
       with col2:
         #count per month graph
         st.subheader("Count by Month")
         month_counts = filtered_activities[activity]['Month'].value_counts()
         st.bar_chart(month_counts, color=["#1ebbd7"])
-        
-        st.write(f"Number of Sessions: {sessions}")       
 
+        total_sessions(filtered_activities[activity])
       
 else:
   pass
