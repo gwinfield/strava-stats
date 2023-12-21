@@ -87,7 +87,6 @@ if file != None:
       else:
         sess_hrs = int(avg_session // 1)
         st.write(f"Average Session Length: {sess_hrs} hours and {sess_min} minutes")
-        st.write(f"Average Session Length: {sess_min} minutes")
       
       if "Ride" in activity:
         avg_pace = filtered_activities[activity]["Distance"].sum() / filtered_activities[activity]["Moving Time"].sum()
