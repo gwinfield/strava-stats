@@ -77,7 +77,7 @@ if file != None:
       filtered_activities[activity] = activities.loc[activities['Activity Type'] == activity].copy()
       st.subheader("Relevant Statistics")
       total_time = filtered_activities[activity]["Elapsed Time"].sum() / 60
-      st.write(f"Total Time: {total_time}")
+      st.write(f"Total Time: {round(total_time, 2)} hours")
       sessions = len(filtered_activities[activity].index)
       st.write(f"Number of Sessions: {sessions}")
       if "Ride" in activity:
