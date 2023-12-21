@@ -137,7 +137,8 @@ if file != None:
           total_sessions(filtered_activities[activity])
 
       else:
-        st.write(f"You worked out an average of sessions {round(len(activities.index)/7, 1)}")
+        st.header("Relevant Statsitics")
+        st.write(f"You worked out an average of {round(len(activities.index)/365*7, 1)} days a week")
         st.markdown("""---""")
         
         col1, col2 = st.columns(2)
