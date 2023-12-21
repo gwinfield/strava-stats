@@ -72,7 +72,7 @@ if file != None:
   activity_tabs = st.tabs(activities_list)
   filtered_activities = {}
 
-   def avg_session(data):
+  def avg_session(data):
     sessions = len(data.index)
     total_time = data["Elapsed Time"].sum() / 60
     avg_session = total_time / sessions
