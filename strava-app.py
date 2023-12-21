@@ -76,8 +76,10 @@ if file != None:
     with tab:
       filtered_activities[activity] = activities.loc[activities['Activity Type'] == activity].copy()
       st.header("Relevant Statsitics")
+      
       sessions = len(filtered_activities[activity].index)
       total_time = filtered_activities[activity]["Elapsed Time"].sum() / 60
+      
       avg_session = total_time / sessions
       sess_min = int((avg_session % 1) * 60)
       if avg_session < 1:
@@ -89,6 +91,7 @@ if file != None:
       if "Ride" in activity:
         avg_pace = filtered_activities[activity]["Distance"].sum() / filtered_activities[activity]["Moving Time"].sum()
         st.write(f"Average Pace: {round(avg_pace*60, 2)} mph")
+      
       if "Run" in activity:
         avg_mile_time = filtered_activities[activity]["Moving Time"].sum() / filtered_activities[activity]["Distance"].sum()
         run_minutes = int(avg_mile_time // 1)
