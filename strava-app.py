@@ -42,8 +42,8 @@ if file != None:
   def km_to_mi(km):
     return km*0.621371
 
-  def sec_to_min(sec):
-    return sec/60
+  def sec_to_hr(sec):
+    return sec/3600
   
   def transform_data(data):
     #filter data for relevant columns
@@ -52,7 +52,7 @@ if file != None:
     #apply conversion functions
     new_df['Distance'] = new_df['Distance'].apply(km_to_mi)
     new_df['Elapsed Time'] = new_df['Elapsed Time'].apply(sec_to_min)
-    new_df['Moving Time'] = new_df['Moving Time'].apply(sec_to_min)
+    new_df['Moving Time'] = new_df['Moving Time'].apply(sec_to_hr)
 
     #create date/time related columns
     new_df['Activity Date'] = new_df['Activity Date'].astype(str)
@@ -79,16 +79,18 @@ if file != None:
     with tab:
       filtered_activities[activity] = activities.loc[activities['Activity Type'] == activity].copy()
       st.subheader("Relevant Statistics")
-      total_time =
-      total_sessions =
-      if "ride" in activity.
+      #total_time =
+      #total_sessions =
+      if "ride" in nameof(activity) | "run" in nameof(activity):
+        avg_pace = filtered_activities[activity]["Moving Time"].sum() / filtered_activities[activity]["Distance"].sum()
+        st.write(avg_pace)
       
       col1, col2 = st.columns(2)
       
       with col1:
         #time per month graph
         st.subheader("Time (in hrs) Spent by Month")
-        filtered_activities[activity]["Elapsed Time"] = filtered_activities[activity]["Elapsed Time"] / 60
+        filtered_activities[activity]["Elapsed Time"] = filtered_activities[activity]["Elapsed Time"]
         time_by_month = filtered_activities[activity].groupby("Month")["Elapsed Time"].sum()
         st.bar_chart(time_by_month, color=["#fc4c02"])
         #st.dataframe(data=filtered_activities[activity])
