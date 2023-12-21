@@ -88,7 +88,7 @@ if file != None:
     return st.write(f"Total Time: {round(total_time, 2)} hours")
 
   activities_list = activities['Activity Type'].unique().tolist()
-  activities_list.append("Overview")
+  activities)list.insert(0, "Overview")
   activity_tabs = st.tabs(activities_list)
   filtered_activities = {}
   
