@@ -86,7 +86,8 @@ if file != None:
     return st.write(f"Number of Sessions: {sessions}")
 
   def total_time(data):
-    total_time = data["Elapsed Time"].sum() / 60
+    data["Elapsed Time"] = data["Elapsed Time"]/60
+    total_time = data["Elapsed Time"].sum()
     return st.write(f"Total Time: {round(total_time, 2)} hours")
 
   def time_per_month_graph(data):
