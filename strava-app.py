@@ -72,17 +72,26 @@ if file != None:
     activities_list = data['Activity Type'].unique().tolist()
     filtered_activities = {}
 
-    for tab in st.tabs(activities_list):
-      filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
-      with tab:
-        st.dataframe(data=filtered_activities[tab])
-   
-    pass
+    for tab in activities_list:
+        filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
+        with st.beta_expander(tab):  # Using beta_expander for each tab
+            st.dataframe(data=filtered_activities[tab])
 
   create_tabs(activities)
     
 else:
   pass
+
+#def create_tabs(data):
+    #activities_list = data['Activity Type'].unique().tolist()
+    #filtered_activities = {}
+
+    #for tab in st.tabs(activities_list):
+      #filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
+      #with tab:
+        3st.dataframe(data=filtered_activities[tab])
+   
+    #pass
 
 #filtered_activities = {}
         #for act in activities_list:
