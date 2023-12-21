@@ -89,7 +89,7 @@ else:
     #for tab in st.tabs(activities_list):
       #filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
       #with tab:
-        3st.dataframe(data=filtered_activities[tab])
+        #st.dataframe(data=filtered_activities[tab])
    
     #pass
 
