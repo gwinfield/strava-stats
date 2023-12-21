@@ -76,18 +76,22 @@ if file != None:
     with tab:
       filtered_activities[activity] = activities.loc[activities['Activity Type'] == activity].copy()
       
-      #time per month graph
-      st.subheader("Time Spent by Month")
-      st.write("Time in hours")
-      filtered_activities[activity]["Elapsed Time"] = filtered_activities[activity]["Elapsed Time"] / 60
-      time_by_month = filtered_activities[activity].groupby("Month")["Elapsed Time"].sum()
-      st.line_chart(time_by_month, color=["#fc4c02"])
-      #st.dataframe(data=filtered_activities[activity])
+      col1, col2 = st.columns(2)
+      
+      with col1:
+        #time per month graph
+        st.subheader("Time Spent by Month")
+        st.write("Time in hours")
+        filtered_activities[activity]["Elapsed Time"] = filtered_activities[activity]["Elapsed Time"] / 60
+        time_by_month = filtered_activities[activity].groupby("Month")["Elapsed Time"].sum()
+        st.line_chart(time_by_month, color=["#fc4c02"])
+        #st.dataframe(data=filtered_activities[activity])
 
-      #count per month graph
-      st.subheader("Count by Month")
-      month_counts = filtered_activities[activity]['Month'].value_counts()
-      st.bar_chart(month_counts, color=["#fc4c02"])
+      with col2:
+        #count per month graph
+        st.subheader("Count by Month")
+        month_counts = filtered_activities[activity]['Month'].value_counts()
+        st.bar_chart(month_counts, color=["#fc4c02"])
 
       
 else:
