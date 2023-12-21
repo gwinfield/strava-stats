@@ -83,7 +83,7 @@ if file != None:
     st.write(activities.head(15))
 
   st.sidebar.header("Filter the graphs, stats, and data here")
-  month = st.sidebar.multiselect("Month: ", options = activities['Month'])
+  month = st.sidebar.multiselect("Month: ", options = activities['Month'].unique())
     
 else:
   pass
