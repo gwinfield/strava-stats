@@ -1,6 +1,7 @@
 #import libraries
 import streamlit as st
 import pandas as pd
+import altair as alt
 
 #configure streamlit app
 st.set_page_config(
