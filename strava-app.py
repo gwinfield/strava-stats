@@ -48,7 +48,7 @@ if file != None:
   
     #apply conversion functions
     new_df['Distance'] = new_df['Distance'].apply(km_to_mi)
-    new_df['Elapsed Time'] = new_df['Elapsed Time'].apply(sec_to_min)
+    new_df['Elapsed Time'] = new_df['Elapsed Time'].apply(sec_to_hr)
     new_df['Moving Time'] = new_df['Moving Time'].apply(sec_to_hr)
 
     #create date/time related columns
