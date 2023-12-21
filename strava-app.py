@@ -72,16 +72,14 @@ if file != None:
   tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
 
   st.sidebar.header("Apply filters here")
-  month = st.sidebar.multiselect("Month:", options = activities["Month"].unique(), default = activities["Month"].unique())
-  dotw = st.sidebar.multiselect("Day of the Week:", options = activities["Day of the Week"].unique(), default = activities["Day of the Week"].unique())
   activity = st.sidebar.multiselect("Activity Type:", options = activities["Activity Type"].unique(), default = activities["Activity Type"].unique())
 
   activities_filtered = activities.query("`Month` == @month & `Day of the Week` == @dotw & `Activity Type` == @activity")
 
   with tab1:
-    st.header("Count of Activity Types")
-    activity_counts = activities_filtered['Activity Type'].value_counts()
-    st.bar_chart(activity_counts)
+    st.header("Count by Month")
+    month_counts = activities_filtered['Month'].value_counts()
+    st.bar_chart(month_counts)
      
   with tab2:
     st.header("Stats")
@@ -94,6 +92,9 @@ else:
   pass
    
     #pass
+
+ #month = st.sidebar.multiselect("Month:", options = activities["Month"].unique(), default = activities["Month"].unique())
+  #dotw = st.sidebar.multiselect("Day of the Week:", options = activities["Day of the Week"].unique(), default = activities["Day of the Week"].unique())
 
 # def create_tabs(data):
     #activities_list = data['Activity Type'].unique().tolist()
