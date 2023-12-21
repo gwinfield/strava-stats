@@ -12,7 +12,7 @@ st.set_page_config(
 
 #create title & inital note
 st.title("2023 Strava Statistics:athletic_shoe:")
-st.write("Welcome to your (unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard! Any questions or bugs? Text me or email me at gwinfield@utexas.edu!")
+st.write("Welcome to your (unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard! Any questions or bugs? Text me or email me at gwinfield@utexas.edu.")
 st.markdown("""---""")
 
 #give user place to upload their activity data & explain the process
