@@ -118,10 +118,10 @@ if file != None:
         avg_session(filtered_activities[activity])
       
         if "Ride" in activity or "Run" in activity or "Walk" in activity or "Hike" in activity:
-          total_distance = filtered_activities[activity]["Distance"].sum()
-          st.write(f"Total Distance: {round(total_distance,2)} miles")
           longest_distance = filtered_activities[activity]["Distance"].max()
           st.write(f"Longest Distance: {round(total_distance,2)} miles")
+          total_distance = filtered_activities[activity]["Distance"].sum()
+          st.write(f"Total Distance: {round(total_distance,2)} miles")
           
           if "Ride" in activity:
             avg_pace = total_distance / filtered_activities[activity]["Moving Time"].sum()
