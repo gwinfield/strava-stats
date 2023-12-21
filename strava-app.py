@@ -158,17 +158,4 @@ if file != None:
       
 else:
   pass
-
-#pass
-
-#months_categories = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    #month_counts['Months'] = pd.Categorical(month_counts['Months'], categories = months_categories)
-
-#month = st.sidebar.multiselect("Month:", options = activities["Month"].unique(), default = activities["Month"].unique())
-  #dotw = st.sidebar.multiselect("Day of the Week:", options = activities["Day of the Week"].unique(), default = activities["Day of the Week"].unique())
-
-
-#for key in filtered_activities.keys():
-      #st.tabs([key])
-
  
