@@ -139,7 +139,7 @@ if file != None:
       else:
         st.header("Way to go!")
         st.write(f"You worked out an average of {round(len(activities.index)/365*7, 1)} days a week.")
-        act_count = activities.groupby(["Activity Type"]).value_count()
+        act_count = activities["Activity Type"].value_counts()
         st.write(f"Your top activity was {act_count.idxmax()}.")
         st.markdown("""---""")
         
