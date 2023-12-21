@@ -74,6 +74,7 @@ if file != None:
     total_time = data["Elapsed Time"].sum() / 60
     avg_session = total_time / sessions
     minutes = int((avg_session % 1) * 60)
+    
     if avg_session < 1:
       return st.write(f"Average Session Length: {minutes} minutes")
     else:
@@ -121,7 +122,7 @@ if file != None:
             avg_pace = total_distance / filtered_activities[activity]["Moving Time"].sum()
             st.write(f"Average Pace: {round(avg_pace*60, 2)} mph")
       
-        else:
+          else:
             avg_mile_time = filtered_activities[activity]["Moving Time"].sum() / total_distance
             run_min = int(avg_mile_time // 1)
             run_sec = int((avg_mile_time % 1) * 60)
