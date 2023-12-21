@@ -71,7 +71,7 @@ if file != None:
 
   tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
 
-  st.sidebar.header("Filter the graphs, stats, and data here")
+  st.sidebar.header("Apply filters here")
   month = st.sidebar.selectbox("Month:", options = activities["Month"].unique())
   dotw = st.sidebar.selectbox("Day of the Week:", options = activities["Day of the Week"].unique())
   month = st.sidebar.selectbox("Activity Type:", options = activities["Activity Type"].unique())
