@@ -89,13 +89,13 @@ if file != None:
       if "Ride" in activity:
         avg_pace = filtered_activities[activity]["Distance"].sum() / filtered_activities[activity]["Moving Time"].sum()
         st.write(f"Average Pace: {round(avg_pace*60, 2)} mph")
-        st.markdown("""---""")
       if "Run" in activity:
         avg_mile_time = filtered_activities[activity]["Moving Time"].sum() / filtered_activities[activity]["Distance"].sum()
         run_minutes = int(avg_mile_time // 1)
         run_seconds = int((avg_mile_time % 1) * 60)
         st.write(f"Average Mile Time: {run_minutes}:{run_seconds:02d}")
-        st.markdown("""---""")
+      
+      st.markdown("""---""")
       
       col1, col2 = st.columns(2)
       
