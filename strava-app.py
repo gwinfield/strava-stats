@@ -72,8 +72,8 @@ if file != None:
   tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
 
   st.sidebar.header("Apply filters here")
-  month = st.sidebar.multiselect("Month:", options = activities["Month"].unique(), "Month:", default = activities["Month"].unique())
-  dotw = st.sidebar.multiselect("Day of the Week:", options = activities["Day of the Week"].unique(), "Day of the Week:", default = activities["Day of the Week"].unique())
+  month = st.sidebar.multiselect("Month:", options = activities["Month"].unique(), default = activities["Month"].unique())
+  dotw = st.sidebar.multiselect("Day of the Week:", options = activities["Day of the Week"].unique(), default = activities["Day of the Week"].unique())
   activity = st.sidebar.multiselect("Activity Type:", options = activities["Activity Type"].unique(), default = activities["Activity Type"].unique())
 
   activities_filtered = activities.query("Month == @month & DOTW == @dotw & Activity == @activity")
