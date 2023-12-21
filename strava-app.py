@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 #create title & inital note
-st.title("2023 Strava Statistics:athletic_shoe:")
+st.title(" TEST 2023 Strava Statistics:athletic_shoe:")
 st.write("Welcome to your (unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard! Any questions or bugs? Email me at gwinfield@utexas.edu!")
 st.markdown("""---""")
 
@@ -72,24 +72,14 @@ if file != None:
     activities_list = data['Activity Type'].unique().tolist()
     filtered_activities = {}
 
-    for tab in activities_list:
-        filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
-        with st.beta_expander(tab):  # Using beta_expander for each tab
-            st.dataframe(data=filtered_activities[tab])
+    for tab in st.tabs(activities_list):
+      filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
+      st.dataframe(data=filtered_activities[tab])
 
   create_tabs(activities)
     
 else:
   pass
-
-#def create_tabs(data):
-    #activities_list = data['Activity Type'].unique().tolist()
-    #filtered_activities = {}
-
-    #for tab in st.tabs(activities_list):
-      #filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
-      #with tab:
-        #st.dataframe(data=filtered_activities[tab])
    
     #pass
 
