@@ -6,13 +6,13 @@ import altair as alt
 #configure streamlit app
 st.set_page_config(
   page_title = "Strava Stats",
-  page_icon = ":bike:",
+  page_icon = ":bicyclist:",
   layout = "wide",
 )
 
 #create title & inital note
 st.title("2023 Strava Statistics:athletic_shoe:")
-st.write("Welcome to your (unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard! Any questions or bugs? Email me at gwinfield@utexas.edu!")
+st.write("Welcome to your (unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard! Any questions or bugs? Text me or email me at gwinfield@utexas.edu!")
 st.markdown("""---""")
 
 #give user place to upload their activity data & explain the process
