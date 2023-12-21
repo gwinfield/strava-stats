@@ -134,22 +134,22 @@ if file != None:
   else:
     col1, col2 = st.columns(2)
       
-      with col1:
-        #time per month graph
-        st.subheader("Time (in hrs) Spent by Month")
-        activities["Elapsed Time"] = activities["Elapsed Time"]
-        time_by_month = activities.groupby("Month")["Elapsed Time"].sum()
-        st.bar_chart(time_by_month, color=["#fc4c02"])
+    with col1:
+      #time per month graph
+      st.subheader("Time (in hrs) Spent by Month")
+      activities["Elapsed Time"] = activities["Elapsed Time"]
+      time_by_month = activities.groupby("Month")["Elapsed Time"].sum()
+      st.bar_chart(time_by_month, color=["#fc4c02"])
 
-        total_time(activities)
+      total_time(activities)
         
-      with col2:
-        #count per month graph
-        st.subheader("Count by Month")
-        month_counts = activities['Month'].value_counts()
-        st.bar_chart(month_counts, color=["#1ebbd7"])
+    with col2:
+      #count per month graph
+      st.subheader("Count by Month")
+      month_counts = activities['Month'].value_counts()
+      st.bar_chart(month_counts, color=["#1ebbd7"])
 
-        total_sessions(activities)
+      total_sessions(activities)
       
 else:
   pass
