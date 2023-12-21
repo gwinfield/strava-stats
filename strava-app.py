@@ -68,7 +68,7 @@ if file != None:
 
   activities = transform_data(original_activities)
 
-  tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
+  tab1, tab2, tab3 = st.tabs(["Number of Activities by Month", "Time Spent", "Data"])
 
   st.sidebar.header("Apply filters here")
   activity = st.sidebar.multiselect("Activity Type:", options = activities["Activity Type"].unique(), default = activities["Activity Type"].unique())
@@ -78,8 +78,6 @@ if file != None:
   with tab1:
     st.header("Count by Month")
     month_counts = activities_filtered['Month'].value_counts()
-    months_categories = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    month_counts['Months'] = pd.Categorical(month_counts['Months'], categories = months_categories)
     st.bar_chart(month_counts, color=["#fc4c02"])
      
   with tab2:
@@ -93,7 +91,10 @@ if file != None:
 else:
   pass
    
-    #pass
+#months_categories = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  #month_counts['Months'] = pd.Categorical(month_counts['Months'], categories = months_categories)
+
+#pass
 
 #months_categories = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     #month_counts['Months'] = pd.Categorical(month_counts['Months'], categories = months_categories)
