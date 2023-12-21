@@ -74,7 +74,7 @@ if file != None:
     for tab in st.tabs(activities_list):
       with tab:
         filtered_activities = {}
-        filtered_activities[act] = data.loc[data['Activity Type'] == act].copy())
+        filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy())
         st.dataframe(data=filtered_activities[tab])
    
     pass
