@@ -83,7 +83,7 @@ if file != None:
      
   with tab2:
     st.header("Stats")
-    st.write(month_counts.columns())
+    st.write(list(month_counts.columns))
     st.write(month_counts.head(15))
 
   with tab3:
