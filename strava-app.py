@@ -68,35 +68,23 @@ if file != None:
 
   activities = transform_data(original_activities)
 
-  def create_tabs(data):
-    activities_list = data['Activity Type'].unique().tolist()
-    filtered_activities = {}
-
-    for tab in st.tabs(activities_list):
-      filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
-      st.dataframe(data=filtered_activities[tab])
-
-  create_tabs(activities)
+  with st.sidebar:
+    st.write("TEST")
     
 else:
   pass
    
     #pass
 
-#filtered_activities = {}
-        #for act in activities_list:
-          #filtered_activities[act] = data.loc[data['Activity Type'] == act].copy())
-        #st.dataframe(data=filtered_activities[tab])
+# def create_tabs(data):
+    #activities_list = data['Activity Type'].unique().tolist()
+  #  filtered_activities = {}
 
-#come back fs
-#filtered_activities = {}
-        #for act in activities_list:
-          #filtered_activities[act] = data.loc[data['Activity Type'] == act].copy())
-        #st.dataframe(data=filtered_activities[tab])
- 
-#filtered_activities = {}
-    #for act in activities_list:
-      #filtered_activities[act] = data.loc[data['Activity Type'] == act].copy())
+ #   for tab in st.tabs(activities_list):
+ #     filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
+  #    st.dataframe(data=filtered_activities[tab])
+
+  #create_tabs(activities)
       
 #for key in filtered_activities.keys():
       #st.tabs([key])
