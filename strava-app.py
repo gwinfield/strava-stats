@@ -84,10 +84,6 @@ if file != None:
 
   st.sidebar.header("Filter the graphs, stats, and data here")
   month = st.sidebar.multiselect("Month: ", options = activities['Month'])
-      
-  
-  with st.sidebar:
-      st.
     
 else:
   pass
