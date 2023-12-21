@@ -125,8 +125,6 @@ if file != None:
         st.markdown("""---""")
       
         col1, col2 = st.columns(2)
-        
-        st.write(f"You worked out an average of sessions {round(len(activities.index)/7, 1)}")
       
         with col1:
           #time per month graph
@@ -139,6 +137,9 @@ if file != None:
           total_sessions(filtered_activities[activity])
 
       else:
+        st.write(f"You worked out an average of sessions {round(len(activities.index)/7, 1)}")
+        st.markdown("""---""")
+        
         col1, col2 = st.columns(2)
       
         with col1:
