@@ -75,7 +75,7 @@ if file != None:
 
     for tab in st.tabs(activities_list):
       with tab:
-        st.write(tab)
+        st.write(f"{tab}")
       #filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
       #with tab:
         #st.dataframe(data=filtered_activities[tab])
