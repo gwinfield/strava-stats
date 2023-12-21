@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 #create title & inital note
-st.title("2023 Strava Statistics:athletic_shoe:")
+st.title("TEST 2023 Strava Statistics:athletic_shoe:")
 st.write("Welcome to your (unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard! Any questions or bugs? Email me at gwinfield@utexas.edu!")
 st.markdown("""---""")
 
@@ -68,36 +68,18 @@ if file != None:
 
   activities = transform_data(original_activities)
 
-  tab1, tab2, tab3, tab4 = st.tabs(["Relevent Stats", "Number of Activities by Month", "Time Spent by Month", "Data Preview"])
+  def create_tabs(data):
+    activities_list = data['Activity Type'].unique().tolist()
+    filtered_activities = {}
 
-  st.sidebar.header("Apply filters here")
-  activity = st.sidebar.multiselect("Activity Type:", options = activities["Activity Type"].unique(), default = activities["Activity Type"].unique())
+     for tab in st.tabs(activities_list):
+       filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
+       st.dataframe(data=filtered_activities[tab])
 
-  activities_filtered = activities.query("`Activity Type` == @activity")
-
-  with tab1:
-    st.header("Relevant Stats")
+  create_tabs(activities)
       
-  with tab2:
-    st.header("Count by Month")
-    month_counts = activities_filtered['Month'].value_counts()
-    st.bar_chart(month_counts, color=["#fc4c02"])
-     
-  with tab3:
-    st.header("Time Spent by Month")
-    activities_filtered["Elapsed Time"] = activities_filtered["Elapsed Time"] / 60
-    time_by_month = activities_filtered.groupby("Month")["Elapsed Time"].sum()
-    st.bar_chart(time_by_month, color=["#fc4c02"])
-
-  with tab4:
-    st.header("Data Preview")
-    st.write(activities_filtered.head(15))
-    
 else:
   pass
-   
-#months_categories = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-  #month_counts['Months'] = pd.Categorical(month_counts['Months'], categories = months_categories)
 
 #pass
 
@@ -107,41 +89,8 @@ else:
 #month = st.sidebar.multiselect("Month:", options = activities["Month"].unique(), default = activities["Month"].unique())
   #dotw = st.sidebar.multiselect("Day of the Week:", options = activities["Day of the Week"].unique(), default = activities["Day of the Week"].unique())
 
-# def create_tabs(data):
-    #activities_list = data['Activity Type'].unique().tolist()
-  #  filtered_activities = {}
 
- #   for tab in st.tabs(activities_list):
- #     filtered_activities[tab] = data.loc[data['Activity Type'] == tab].copy()
-  #    st.dataframe(data=filtered_activities[tab])
-
-  #create_tabs(activities)
-      
 #for key in filtered_activities.keys():
       #st.tabs([key])
 
-  #tab1, tab2, tab3 = st.tabs(["Bar Graph", "Statistics", "Data"])
-
-  #with tab1:
-    #st.header("Count of Activity Types")
-    #activity_counts = activities['Activity Type'].value_counts()
-    #st.bar_chart(activity_counts)
-     
-  #with tab2:
-    #st.header("Stats")
-
-  #with tab3:
-    #st.header("Data Preview")
-    #st.write(activities.head(15))
-
-#activity_counts = activities['Activity Type'].value_counts()
-
-#st.bar_chart(activity_counts)
-
-
-#st.dataframe(data=activities)
-
-#[theme]
-#primaryColor = '#fc4c02'
-#backgroundColor = '#ffffff'
-#textColor = '#OOOO8O'
+ 
