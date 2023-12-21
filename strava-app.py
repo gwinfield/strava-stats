@@ -82,9 +82,8 @@ if file != None:
     st.header("Data Preview")
     st.write(activities.head(15))
 
-  #st.sidebar.header("Filter the graphs, stats, and data here")
-  #for col, val in activities.items:
-    #if col == 'Month':
+  st.sidebar.header("Filter the graphs, stats, and data here")
+  month = st.sidebar.multiselect("Month: ", options = activities['Month'])
       
   
   with st.sidebar:
