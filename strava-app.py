@@ -68,9 +68,7 @@ if file != None:
 
   activities = transform_data(original_activities)
 
-  activities_list = activities['Activity Type'].unique().tolist()
-  activity_tabs = st.tabs(activities_list)
-  filtered_activities = {}
+  st.tabs("Overview")
 
   def avg_session(data):
     sessions = len(data.index)
@@ -91,6 +89,9 @@ if file != None:
     total_time = data["Elapsed Time"].sum() / 60
     return st.write(f"Total Time: {round(total_time, 2)} hours")
 
+  activities_list = activities['Activity Type'].unique().tolist()
+  activity_tabs = st.tabs(activities_list)
+  filtered_activities = {}
   
   for activity, tab in zip(activities_list, activity_tabs):
     with tab:
