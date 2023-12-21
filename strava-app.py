@@ -71,7 +71,7 @@ if file != None:
 
   def avg_session(data):
     sessions = len(data.index)
-    total_time = data["Elapsed Time"].sum() #in min
+    total_time = data["Elapsed Time"].sum()
     avg_session = total_time / sessions
     minutes = int((avg_session % 1) * 60)
     
@@ -86,8 +86,8 @@ if file != None:
     return st.write(f"Number of Sessions: {sessions}")
 
   def total_time(data):
-    data["Elapsed Time"] = data["Elapsed Time"]/60
-    total_time = data["Elapsed Time"].sum()
+    data["Elapsed Time"] = data["Elapsed Time"]
+    total_time = data["Elapsed Time"].sum() #in min
     return st.write(f"Total Time: {round(total_time, 2)} hours")
 
   def time_per_month_graph(data):
