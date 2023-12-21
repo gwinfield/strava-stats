@@ -99,36 +99,36 @@ if file != None:
 
     avg_session(filtered_activities[activity])
       
-      if "Ride" in activity:
-        avg_pace = filtered_activities[activity]["Distance"].sum() / filtered_activities[activity]["Moving Time"].sum()
-        st.write(f"Average Pace: {round(avg_pace*60, 2)} mph")
+    if "Ride" in activity:
+      avg_pace = filtered_activities[activity]["Distance"].sum() / filtered_activities[activity]["Moving Time"].sum()
+      st.write(f"Average Pace: {round(avg_pace*60, 2)} mph")
       
-      if "Run" in activity:
-        avg_mile_time = filtered_activities[activity]["Moving Time"].sum() / filtered_activities[activity]["Distance"].sum()
-        run_minutes = int(avg_mile_time // 1)
-        run_seconds = int((avg_mile_time % 1) * 60)
-        st.write(f"Average Mile Time: {run_minutes}:{run_seconds:02d}")
+    if "Run" in activity:
+      avg_mile_time = filtered_activities[activity]["Moving Time"].sum() / filtered_activities[activity]["Distance"].sum()
+      run_min = int(avg_mile_time // 1)
+      run_sec = int((avg_mile_time % 1) * 60)
+      st.write(f"Average Mile Time: {run_min}:{run_sec:02d}")
       
-      st.markdown("""---""")
+    st.markdown("""---""")
       
-      col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2)
       
-      with col1:
-        #time per month graph
-        st.subheader("Time (in hrs) Spent by Month")
-        filtered_activities[activity]["Elapsed Time"] = filtered_activities[activity]["Elapsed Time"]
-        time_by_month = filtered_activities[activity].groupby("Month")["Elapsed Time"].sum()
-        st.bar_chart(time_by_month, color=["#fc4c02"])
+    with col1:
+      #time per month graph
+      st.subheader("Time (in hrs) Spent by Month")
+      filtered_activities[activity]["Elapsed Time"] = filtered_activities[activity]["Elapsed Time"]
+      time_by_month = filtered_activities[activity].groupby("Month")["Elapsed Time"].sum()
+      st.bar_chart(time_by_month, color=["#fc4c02"])
 
         total_time(filtered_activities[activity])
         
-      with col2:
-        #count per month graph
-        st.subheader("Count by Month")
-        month_counts = filtered_activities[activity]['Month'].value_counts()
-        st.bar_chart(month_counts, color=["#1ebbd7"])
+    with col2:
+      #count per month graph
+      st.subheader("Count by Month")
+      month_counts = filtered_activities[activity]['Month'].value_counts()
+      st.bar_chart(month_counts, color=["#1ebbd7"])
 
-        total_sessions(filtered_activities[activity])
+      total_sessions(filtered_activities[activity])
       
 else:
   pass
