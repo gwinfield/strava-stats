@@ -113,15 +113,19 @@ if file != None:
 
         avg_session(filtered_activities[activity])
       
-        if "Ride" in activity:
-          avg_pace = filtered_activities[activity]["Distance"].sum() / filtered_activities[activity]["Moving Time"].sum()
+        if "Ride" in activity or "Run" in activity:
+          total_distance = filtered_activities[activity]["Distance"].sum()
+          st.write(f"Total Distance: {total_distance}")
+          
+          if "Ride" in activity:
+          avg_pace = total_distance / filtered_activities[activity]["Moving Time"].sum()
           st.write(f"Average Pace: {round(avg_pace*60, 2)} mph")
       
-        if "Run" in activity:
-          avg_mile_time = filtered_activities[activity]["Moving Time"].sum() / filtered_activities[activity]["Distance"].sum()
-          run_min = int(avg_mile_time // 1)
-          run_sec = int((avg_mile_time % 1) * 60)
-          st.write(f"Average Mile Time: {run_min}:{run_sec:02d}")
+        else:
+            avg_mile_time = filtered_activities[activity]["Moving Time"].sum() / total_distance
+            run_min = int(avg_mile_time // 1)
+            run_sec = int((avg_mile_time % 1) * 60)
+            st.write(f"Average Mile Time: {run_min}:{run_sec:02d}")
       
         st.markdown("""---""")
       
