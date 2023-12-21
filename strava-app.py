@@ -137,8 +137,10 @@ if file != None:
           total_sessions(filtered_activities[activity])
 
       else:
-        st.header("Relevant Statsitics")
-        st.write(f"You worked out an average of {round(len(activities.index)/365*7, 1)} days a week")
+        st.header("Way to go!")
+        st.write(f"You worked out an average of {round(len(activities.index)/365*7, 1)} days a week.")
+        top_act = activities.groupby(["Activity Type"]).count().max(level=0)
+        st.write(f"Your top activity was {top_act}.")
         st.markdown("""---""")
         
         col1, col2 = st.columns(2)
