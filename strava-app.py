@@ -156,7 +156,7 @@ if file != None:
         st.write(f"- Your top activity was {act_count.idxmax()}")
 
         month_count = activities["Month"].value_counts()
-        st.write(f"- Your most active month was {month_count.idxmax()} with {month_count.max()} sessions")
+        st.write(f"- Your most active month was {month_count.idxmax()} with {month_count.max()} activities")
         
         st.markdown("""---""")
         
