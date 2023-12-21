@@ -78,7 +78,7 @@ if file != None:
       st.subheader("Relevant Statistics")
       #total_time =
       #total_sessions =
-      if "ride" in activity | "run" in activity:
+      if "ride" in activity or "run" in activity:
         avg_pace = filtered_activities[activity]["Moving Time"].sum() / filtered_activities[activity]["Distance"].sum()
         st.write(avg_pace)
       
