@@ -74,8 +74,6 @@ if file != None:
     st.header("Count of Activity Types")
     activity_counts = activities['Activity Type'].value_counts()
     st.bar_chart(activity_counts)
-    with st.sidebar:
-      st.write("TEST")
      
   with tab2:
     st.header("Stats")
@@ -83,6 +81,14 @@ if file != None:
   with tab3:
     st.header("Data Preview")
     st.write(activities.head(15))
+
+  #st.sidebar.header("Filter the graphs, stats, and data here")
+  #for col, val in activities.items:
+    #if col == 'Month':
+      
+  
+  with st.sidebar:
+      st.
     
 else:
   pass
