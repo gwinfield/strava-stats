@@ -76,7 +76,7 @@ if file != None:
   dotw = st.sidebar.multiselect("Day of the Week:", options = activities["Day of the Week"].unique(), default = activities["Day of the Week"].unique())
   activity = st.sidebar.multiselect("Activity Type:", options = activities["Activity Type"].unique(), default = activities["Activity Type"].unique())
 
-  activities_filtered = activities.query("Month == @month & DOTW == @dotw & Activity == @activity")
+  activities_filtered = activities.query("Month == @month & Day of the Week == @dotw & Activity Type == @activity")
 
   with tab1:
     st.header("Count of Activity Types")
