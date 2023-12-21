@@ -148,9 +148,6 @@ if file != None:
           #count per month graph
           sessions_per_month_graph(activities)
           total_sessions(activities)
-
-    else:
-      pass
       
 else:
   pass
