@@ -116,7 +116,7 @@ if file != None:
       
         if "Ride" in activity or "Run" in activity:
           total_distance = filtered_activities[activity]["Distance"].sum()
-          st.write(f"Total Distance: {total_distance}")
+          st.write(f"Total Distance: {round(total_distance,2)} miles")
           
           if "Ride" in activity:
             avg_pace = total_distance / filtered_activities[activity]["Moving Time"].sum()
