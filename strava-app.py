@@ -74,7 +74,7 @@ if file != None:
   st.sidebar.header("Apply filters here")
   activity = st.sidebar.multiselect("Activity Type:", options = activities["Activity Type"].unique(), default = activities["Activity Type"].unique())
 
-  activities_filtered = activities.query("`Month` == @month & `Day of the Week` == @dotw & `Activity Type` == @activity")
+  activities_filtered = activities.query("`Activity Type` == @activity")
 
   with tab1:
     st.header("Count by Month")
