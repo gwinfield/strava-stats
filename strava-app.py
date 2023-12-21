@@ -121,7 +121,7 @@ if file != None:
       time_by_month = filtered_activities[activity].groupby("Month")["Elapsed Time"].sum()
       st.bar_chart(time_by_month, color=["#fc4c02"])
 
-        total_time(filtered_activities[activity])
+      total_time(filtered_activities[activity])
         
     with col2:
       #count per month graph
