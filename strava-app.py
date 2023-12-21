@@ -1,9 +1,6 @@
-!pip install varname
-
 #import libraries
 import streamlit as st
 import pandas as pd
-import varname as nameof
 
 #configure streamlit app
 st.set_page_config(
