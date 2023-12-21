@@ -83,7 +83,7 @@ if file != None:
         st.subheader("Time (in hrs) Spent by Month")
         filtered_activities[activity]["Elapsed Time"] = filtered_activities[activity]["Elapsed Time"] / 60
         time_by_month = filtered_activities[activity].groupby("Month")["Elapsed Time"].sum()
-        st.line_chart(time_by_month, color=["#fc4c02"])
+        st.bar_chart(time_by_month, color=["#fc4c02"])
         #st.dataframe(data=filtered_activities[activity])
 
       with col2:
