@@ -80,7 +80,7 @@ if file != None:
     month_counts = activities_filtered['Month'].value_counts()
     months_categories = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     month_counts['Months'] = month_counts.Categorical(month_counts['Months'], categories = months_categories)
-    month_counts.sort_values(by="Month")
+    month_counts.sort_values(by="Month", inplace=True)
     st.bar_chart(month_counts, color=["#fc4c02"])
      
   with tab2:
