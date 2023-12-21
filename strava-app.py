@@ -17,10 +17,13 @@ st.markdown("""---""")
 #give user place to upload their activity data & explain the process
 st.subheader("Upload your activity data")
 
-url = "https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export"
-st.write("To obtain your Strava data, follow these tabs on strava.com: My Account :arrow_forward: Delete or download your account :arrow_forward: Get started :arrow_forward: Request your archive")
+web_url = "https://www.strava.com"
+help_url = "https://support.strava.com/hc/en-us/articles/216918437-Exporting-your-Data-and-Bulk-Export"
+
+st.markdown("To obtain your Strava data, follow these tabs on the [Strava](%s) website:" %web_url)
+st.write("My Account :arrow_forward: Delete or download your account :arrow_forward: Get started :arrow_forward: Request your archive") 
 st.write("Once you've received the zip file via email, extract all files and upload the activities.csv file onto this page!")
-st.markdown("Questions? Click [here](%s) to learn more." % url)
+st.markdown("Questions? Click [here](%s) to learn more." % help_url)
 
 file = st.file_uploader(" ", key="loader", type='csv')
 
