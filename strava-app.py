@@ -78,7 +78,6 @@ if file != None:
   with tab1:
     st.header("Count by Month")
     month_counts = activities_filtered['Month'].value_counts(sort=True)
-    #month_counts.sort_values(by=["count"], inplace=True)
     st.bar_chart(month_counts, color=["#fc4c02"])
      
   with tab2:
