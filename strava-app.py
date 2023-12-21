@@ -87,14 +87,26 @@ if file != None:
     total_time = data["Elapsed Time"].sum() / 60
     return st.write(f"Total Time: {round(total_time, 2)} hours")
 
+  def time_per_month_graph(data):
+    st.subheader("Time (in hrs) Spent by Month")
+    data["Elapsed Time"] = data["Elapsed Time"]
+    time_by_month = data.groupby("Month")["Elapsed Time"].sum()
+    return st.bar_chart(time_by_month, color=["#fc4c02"])
+
+  def sessions_per_month_graph(data):
+    st.subheader("Count by Month")
+    month_counts = data['Month'].value_counts()
+    return st.bar_chart(month_counts, color=["#1ebbd7"])
+
+
   activities_list = activities['Activity Type'].unique().tolist()
-  activities_list.insert(0, "Overview")
+  activities_list.insert(0, "All Activities")
   activity_tabs = st.tabs(activities_list)
   filtered_activities = {}
   
   for activity, tab in zip(activities_list, activity_tabs):
     with tab:
-      if activity != "Overview":
+      if activity != "All Activities":
         filtered_activities[activity] = activities.loc[activities['Activity Type'] == activity].copy()
         st.header("Relevant Statsitics")
 
@@ -116,40 +128,26 @@ if file != None:
       
         with col1:
           #time per month graph
-          st.subheader("Time (in hrs) Spent by Month")
-          filtered_activities[activity]["Elapsed Time"] = filtered_activities[activity]["Elapsed Time"]
-          time_by_month = filtered_activities[activity].groupby("Month")["Elapsed Time"].sum()
-          st.bar_chart(time_by_month, color=["#fc4c02"])
-
+          time_per_month_graph(filtered_activities[activity])
           total_time(filtered_activities[activity])
         
         with col2:
           #count per month graph
-          st.subheader("Count by Month")
-          month_counts = filtered_activities[activity]['Month'].value_counts()
-          st.bar_chart(month_counts, color=["#1ebbd7"])
-
+          sessions_per_month_graph(filtered_activities[activity])
           total_sessions(filtered_activities[activity])
 
   else:
     col1, col2 = st.columns(2)
       
-    with col1:
-      #time per month graph
-      st.subheader("Time (in hrs) Spent by Month")
-      activities["Elapsed Time"] = activities["Elapsed Time"]
-      time_by_month = activities.groupby("Month")["Elapsed Time"].sum()
-      st.bar_chart(time_by_month, color=["#fc4c02"])
-
-      total_time(activities)
+   with col1:
+          #time per month graph
+          time_per_month_graph(activities)
+          total_time(activities)
         
-    with col2:
-      #count per month graph
-      st.subheader("Count by Month")
-      month_counts = activities['Month'].value_counts()
-      st.bar_chart(month_counts, color=["#1ebbd7"])
-
-      total_sessions(activities)
+        with col2:
+          #count per month graph
+          sessions_per_month_graph(activities)
+          total_sessions(activities)
       
 else:
   pass
