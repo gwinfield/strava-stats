@@ -100,15 +100,22 @@ if file != None:
   def time_per_month_graph(data):
     st.subheader("Time (in hrs) Spent by Month")
     time_by_month = data.groupby("Month")["Elapsed Time"].sum().reset_index()
-    #return st.bar_chart(time_by_month, color=["#fc4c02"])
     time_by_month["Elapsed Time (hrs)"] = time_by_month["Elapsed Time"] / 60
     
-    #st.altair_chart(chart, use_container_width=True)
+    months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    
+    chart = alt.Chart(month_counts).mark_bar().encode(
+      x=alt.X('Month:N', sort=months_order),
+      y='Elapsed Time (hrs):Q'
+    )
+    st.altair_chart(chart, use_container_width=True)
+    
+    #return st.bar_chart(time_by_month, color=["#fc4c02"])
     
     #st.bar_chart(time_by_month.set_index("Month")["Elapsed Time (hrs)"], color="#fc4c02")
     #st.write(time_by_month.head())
 
-    return st.write(time_by_month.head())
+    #return st.write(time_by_month.head())
   
   def sessions_per_month_graph(data):
     st.subheader("Count by Month")
