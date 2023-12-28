@@ -96,7 +96,7 @@ if file != None:
   
   def sessions_per_month_graph(data):  #creates graph with sessions per month
     st.subheader("Count by Month")
-    month_counts = data.groupby('Activity')['Month'].value_counts().reset_index()
+    month_counts = data.groupby('Activity Type')['Month'].value_counts().reset_index()
     #month_counts.columns = ['Month', 'Count']
     return st.write(month_counts.head())
     
