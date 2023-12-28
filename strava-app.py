@@ -97,15 +97,14 @@ if file != None:
   def sessions_per_month_graph(data):  #creates graph with sessions per month
     st.subheader("Count by Month")
     month_counts = data.groupby('Activity Type')['Month'].value_counts().reset_index()
-    #month_counts.columns = ['Month', 'Count']
-    return st.write(month_counts.head())
+    month_counts.columns = ['Activity','Month', 'Count']
     
-    #chart = alt.Chart(month_counts).mark_bar(color="#1ebbd7").encode(
-      #x=alt.X('Month:N', sort=months_order),
-      #y='Count:Q'
-      #color='Activity'
-    #)
-    #st.altair_chart(chart, use_container_width=True)
+    chart = alt.Chart(month_counts).mark_bar(color="#1ebbd7").encode(
+      x=alt.X('Month:N', sort=months_order),
+      y='Count:Q'
+      color='Activity'
+    )
+    st.altair_chart(chart, use_container_width=True)
 
   activities_list = activities['Activity Type'].unique().tolist()
   activities_list.insert(0, "All Activities")
