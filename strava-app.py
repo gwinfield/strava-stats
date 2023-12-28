@@ -67,48 +67,57 @@ if file != None:
     #return transformed df
     return new_df
 
+  #create variable for transformed data
   activities = transform_data(original_activities)
 
-  def avg_session(data):
+ #define numerous functions that I'll need later
+  def avg_session(data):  #calculates avg session time
     sessions = len(data.index)
     total_time = data["Elapsed Time"].sum()/60
     avg_session = total_time / sessions
     minutes = int((avg_session % 1) * 60)
     
-    if avg_session < 1:
+    if avg_session < 1:   #calculates in minutes if less than hour
       return st.write(f"Average Session Length: {minutes} minutes")
-    else:
+    else:  #calculates in hours and minutes if an hour or more
       hrs = int(avg_session // 1)
       return st.write(f"Average Session Length: {hrs} hours and {minutes} minutes")
       
-  def total_sessions(data):
+  def total_sessions(data):  #calculates total number of sessions
     sessions = len(data.index)
     return st.write(f"Number of Sessions: {sessions}")
 
-  def total_time(data):
+  def total_time(data):  #calculates total number of time spend
     data["Elapsed Time"] = data["Elapsed Time"]
     total_time = data["Elapsed Time"].sum() #in min
     return st.write(f"Total Time: {round(total_time/60, 2)} hours")
   
-  def time_per_month_graph(data):
+ months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+  def time_per_month_graph(data):  #creates graph of time spent by month
+    #create new df with month & time in hours
     st.subheader("Time (in hrs) Spent by Month")
     time_by_month = data.groupby("Month")["Elapsed Time"].sum().reset_index()
     time_by_month["Elapsed Time (hrs)"] = time_by_month["Elapsed Time"] / 60
     
-    months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    #set variable for the order of months
+    #months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     
+    #create chart
     chart = alt.Chart(time_by_month).mark_bar(color="#fc4c02").encode(
       x=alt.X('Month:N', sort=months_order),
       y='Elapsed Time (hrs):Q'
     )
     st.altair_chart(chart, use_container_width=True)
   
-  def sessions_per_month_graph(data):
+  def sessions_per_month_graph(data):  #creates graph with sessions per month
+    #create new df with number of sessions & months
     st.subheader("Count by Month")
     month_counts = data['Month'].value_counts().reset_index()
     month_counts.columns = ['Month', 'Count']
 
-    months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    #set variable for the order of months
+    #months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     
     chart = alt.Chart(month_counts).mark_bar(color="#1ebbd7").encode(
       x=alt.X('Month:N', sort=months_order),
