@@ -114,7 +114,7 @@ if file != None:
     with tab:
       if activity != "All Activities":
         filtered_activities[activity] = activities.loc[activities['Activity Type'] == activity].copy()
-        st.header("Relevant Statsitics")
+        st.header("Relevant Stats:bar_chart:")
 
         avg_session(filtered_activities[activity])
       
@@ -150,7 +150,7 @@ if file != None:
           total_sessions(filtered_activities[activity])
 
       else:
-        st.header("Way to go!")
+        st.header("Way to go! :tada:")
         st.write(f"- You worked out an average of {round(len(activities.index)/365*7, 1)} days a week")
         
         act_count = activities["Activity Type"].value_counts()
