@@ -10,12 +10,10 @@ st.set_page_config(
   layout = "wide",
 )
 
-#create title & inital note
 st.title("2023 Strava Statistics:athletic_shoe:")
 st.write("Welcome to your (unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard! Any questions or bugs? Text me or email me at gwinfield@utexas.edu.")
 st.markdown("""---""")
 
-#give user place to upload their activity data & explain the process
 st.subheader("Upload your activity data")
 
 web_url = "https://www.strava.com"
@@ -28,11 +26,9 @@ st.markdown("Questions? Click [here](%s) to learn more." % help_url)
 
 file = st.file_uploader(" ", key="loader", type='csv')
 
-#once uploaded, this is where the magic happens
 if file != None:
   
   original_activities = pd.read_csv(file)
-  #st.write(original_activities)
   
   st.markdown("""---""")
   st.subheader("See your stats!")
@@ -43,16 +39,13 @@ if file != None:
   def sec_to_min(sec):
       return sec / 60
   
-  def transform_data(data):
-    #filter data for relevant columns
+  def transform_data(data):  #transform and filter data
     new_df = data[['Activity Date', 'Activity Type', 'Elapsed Time', 'Distance', 'Moving Time']]
   
-    #apply conversion functions
     new_df['Distance'] = new_df['Distance'].apply(km_to_mi)
     new_df['Elapsed Time'] = new_df['Elapsed Time'].apply(sec_to_min)
     new_df['Moving Time'] = new_df['Moving Time'].apply(sec_to_min)
 
-    #create date/time related columns
     new_df['Activity Date'] = new_df['Activity Date'].astype(str)
     new_df['Activity Date'] = pd.to_datetime(new_df['Activity Date'], format='%b %d, %Y, %I:%M:%S %p')
     new_df['Day of the Week'] = new_df['Activity Date'].dt.day_name()
@@ -61,25 +54,21 @@ if file != None:
     new_df['Year'] = new_df['Activity Date'].dt.year
     new_df = new_df.drop(columns=['Activity Date'])
 
-    #filter data by year
     new_df = new_df.loc[new_df['Year'] == 2023]
 
-    #return transformed df
     return new_df
 
-  #create variable for transformed data
   activities = transform_data(original_activities)
 
- #define numerous functions that I'll need later
   def avg_session(data):  #calculates avg session time
     sessions = len(data.index)
     total_time = data["Elapsed Time"].sum()/60
     avg_session = total_time / sessions
     minutes = int((avg_session % 1) * 60)
     
-    if avg_session < 1:   #calculates in minutes if less than hour
+    if avg_session < 1:
       return st.write(f"Average Session Length: {minutes} minutes")
-    else:  #calculates in hours and minutes if an hour or more
+    else:
       hrs = int(avg_session // 1)
       return st.write(f"Average Session Length: {hrs} hours and {minutes} minutes")
       
@@ -89,19 +78,16 @@ if file != None:
 
   def total_time(data):  #calculates total number of time spend
     data["Elapsed Time"] = data["Elapsed Time"]
-    total_time = data["Elapsed Time"].sum() #in min
+    total_time = data["Elapsed Time"].sum()   #in min
     return st.write(f"Total Time: {round(total_time/60, 2)} hours")
   
-  #set global variable with month order for next two functions
   months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
   def time_per_month_graph(data):  #creates graph of time spent by month
-    #create new df with month & time in hours
     st.subheader("Time (in hrs) Spent by Month")
     time_by_month = data.groupby("Month")["Elapsed Time"].sum().reset_index()
     time_by_month["Elapsed Time (hrs)"] = time_by_month["Elapsed Time"] / 60
     
-    #create and deploy chart
     chart = alt.Chart(time_by_month).mark_bar(color="#fc4c02").encode(
       x=alt.X('Month:N', sort=months_order),
       y='Elapsed Time (hrs):Q'
@@ -109,25 +95,18 @@ if file != None:
     st.altair_chart(chart, use_container_width=True)
   
   def sessions_per_month_graph(data):  #creates graph with sessions per month
-    #create new df with number of sessions & months
     st.subheader("Count by Month")
     month_counts = data['Month'].value_counts().reset_index()
     month_counts.columns = ['Month', 'Count']
     
-    #create and deploy chart
     chart = alt.Chart(month_counts).mark_bar(color="#1ebbd7").encode(
       x=alt.X('Month:N', sort=months_order),
       y='Count:Q'
     )
     st.altair_chart(chart, use_container_width=True)
 
-  #create activities list based on transformed data (will vary by csv uploaded)
   activities_list = activities['Activity Type'].unique().tolist()
-  
-  #create an "all activities" tab for aggregate data
   activities_list.insert(0, "All Activities")
-
-  #create tabs for each activity
   activity_tabs = st.tabs(activities_list)
   filtered_activities = {}
   
@@ -163,12 +142,10 @@ if file != None:
         col1, col2 = st.columns(2)
       
         with col1:
-          #time per month graph
           time_per_month_graph(filtered_activities[activity])
           total_time(filtered_activities[activity])
         
         with col2:
-          #count per month graph
           sessions_per_month_graph(filtered_activities[activity])
           total_sessions(filtered_activities[activity])
 
@@ -186,11 +163,11 @@ if file != None:
         
         col1, col2 = st.columns(2)
       
-        with col1:   #time per month graph
+        with col1:
           time_per_month_graph(activities)
           total_time(activities)
         
-        with col2:  #count per month graph
+        with col2:
           sessions_per_month_graph(activities)
           total_sessions(activities)
       
