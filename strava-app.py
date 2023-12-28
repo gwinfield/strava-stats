@@ -92,6 +92,7 @@ if file != None:
     total_time = data["Elapsed Time"].sum() #in min
     return st.write(f"Total Time: {round(total_time/60, 2)} hours")
   
+  #set global variable with month order for next two functions
   months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
   def time_per_month_graph(data):  #creates graph of time spent by month
@@ -100,10 +101,7 @@ if file != None:
     time_by_month = data.groupby("Month")["Elapsed Time"].sum().reset_index()
     time_by_month["Elapsed Time (hrs)"] = time_by_month["Elapsed Time"] / 60
     
-    #set variable for the order of months
-    #months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    
-    #create chart
+    #create and deploy chart
     chart = alt.Chart(time_by_month).mark_bar(color="#fc4c02").encode(
       x=alt.X('Month:N', sort=months_order),
       y='Elapsed Time (hrs):Q'
@@ -115,18 +113,21 @@ if file != None:
     st.subheader("Count by Month")
     month_counts = data['Month'].value_counts().reset_index()
     month_counts.columns = ['Month', 'Count']
-
-    #set variable for the order of months
-    #months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     
+    #create and deploy chart
     chart = alt.Chart(month_counts).mark_bar(color="#1ebbd7").encode(
       x=alt.X('Month:N', sort=months_order),
       y='Count:Q'
     )
     st.altair_chart(chart, use_container_width=True)
 
+  #create activities list based on transformed data (will vary by csv uploaded)
   activities_list = activities['Activity Type'].unique().tolist()
+  
+  #create an "all activities" tab for aggregate data
   activities_list.insert(0, "All Activities")
+
+  #create tabs for each activity
   activity_tabs = st.tabs(activities_list)
   filtered_activities = {}
   
@@ -185,13 +186,11 @@ if file != None:
         
         col1, col2 = st.columns(2)
       
-        with col1:
-          #time per month graph
+        with col1:   #time per month graph
           time_per_month_graph(activities)
           total_time(activities)
         
-        with col2:
-          #count per month graph
+        with col2:  #count per month graph
           sessions_per_month_graph(activities)
           total_sessions(activities)
       
