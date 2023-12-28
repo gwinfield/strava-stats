@@ -114,7 +114,7 @@ if file != None:
       x=alt.X('Month:N', sort=months_order),
       y='count:Q'
     )
-    return st.altair_chart(chart, use_container_width=True)
+    st.altair_chart(chart, use_container_width=True)
     #return st.write(month_counts.head())
     
     #st.bar_chart(month_counts, color=["#1ebbd7"])
