@@ -112,7 +112,7 @@ if file != None:
     month_counts = data['Month'].value_counts()
     chart = alt.Chart(month_counts).mark_bar().encode(
       x=alt.X('Month:N', sort=months_order),
-      y='count'
+      y='count:Q'
     )
     return st.altair_chart(chart, use_container_width=True)
     #return st.write(month_counts.head())
