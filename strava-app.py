@@ -108,7 +108,7 @@ if file != None:
   def sessions_per_month_graph(data):
     st.subheader("Count by Month")
     month_counts = data['Month'].value_counts().reset_index()
-    month_counts.columns('Months', 'Count')
+    month_counts.columns = ['Months', 'Count']
 
     months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     
