@@ -89,13 +89,6 @@ if file != None:
     data["Elapsed Time"] = data["Elapsed Time"]
     total_time = data["Elapsed Time"].sum() #in min
     return st.write(f"Total Time: {round(total_time/60, 2)} hours")
-
-#def graph_by_month(data):
-    #chart = alt.Chart(data).mark_bar().encode(
-        #x=alt.X('month:N', sort=months_order),
-        #y='count'
-   # )
-    #return st.altair_chart(chart, use_container_width=True)
   
   def time_per_month_graph(data):
     st.subheader("Time (in hrs) Spent by Month")
@@ -104,14 +97,11 @@ if file != None:
     
     months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     
-    chart = alt.Chart(time_by_month).mark_bar().encode(
+    chart = alt.Chart(time_by_month).mark_bar(color="#fc4c02").encode(
       x=alt.X('Month:N', sort=months_order),
       y='Elapsed Time (hrs):Q'
-      #color="#fc4c02"
     )
     st.altair_chart(chart, use_container_width=True)
-    
-    #ideal color = "#fc4c02"
   
   def sessions_per_month_graph(data):
     st.subheader("Count by Month")
@@ -120,15 +110,11 @@ if file != None:
 
     months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     
-    chart = alt.Chart(month_counts).mark_bar().encode(
+    chart = alt.Chart(month_counts).mark_bar(color="#1ebbd7").encode(
       x=alt.X('Month:N', sort=months_order),
       y='Count:Q'
-      #color="#1ebbd7"
     )
     st.altair_chart(chart, use_container_width=True)
-    
-    #ideal color = "#1ebbd7"
-
 
   activities_list = activities['Activity Type'].unique().tolist()
   activities_list.insert(0, "All Activities")
