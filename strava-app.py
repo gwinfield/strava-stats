@@ -104,7 +104,7 @@ if file != None:
     
     months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     
-    chart = alt.Chart(month_counts).mark_bar().encode(
+    chart = alt.Chart(time_by_month).mark_bar().encode(
       x=alt.X('Month:N', sort=months_order),
       y='Elapsed Time (hrs):Q'
     )
