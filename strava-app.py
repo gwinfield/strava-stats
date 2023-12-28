@@ -101,7 +101,7 @@ if file != None:
     
     chart = alt.Chart(month_counts).mark_bar().encode(
       x=alt.X('Month:N', sort=months_order),
-      y='Count:Q'
+      y='Count:Q',
       color='Activity'
     )
     st.altair_chart(chart, use_container_width=True)
