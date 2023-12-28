@@ -114,7 +114,7 @@ if file != None:
     with tab:
       if activity != "All Activities":
         filtered_activities[activity] = activities.loc[activities['Activity Type'] == activity].copy()
-        st.header("Relevant Stats:bar_chart:")
+        st.header("Relevant Stats :bar_chart:")
 
         avg_session(filtered_activities[activity])
       
