@@ -107,7 +107,7 @@ if file != None:
     chart = alt.Chart(time_by_month).mark_bar().encode(
       x=alt.X('Month:N', sort=months_order),
       y='Elapsed Time (hrs):Q'
-      color="#fc4c02"
+      #color="#fc4c02"
     )
     st.altair_chart(chart, use_container_width=True)
     
@@ -123,7 +123,7 @@ if file != None:
     chart = alt.Chart(month_counts).mark_bar().encode(
       x=alt.X('Month:N', sort=months_order),
       y='Count:Q'
-      color="#1ebbd7"
+      #color="#1ebbd7"
     )
     st.altair_chart(chart, use_container_width=True)
     
