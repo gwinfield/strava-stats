@@ -92,7 +92,7 @@ if file != None:
     total_time = data["Elapsed Time"].sum() #in min
     return st.write(f"Total Time: {round(total_time/60, 2)} hours")
   
- months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
   def time_per_month_graph(data):  #creates graph of time spent by month
     #create new df with month & time in hours
