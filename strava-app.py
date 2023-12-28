@@ -107,15 +107,11 @@ if file != None:
     chart = alt.Chart(time_by_month).mark_bar().encode(
       x=alt.X('Month:N', sort=months_order),
       y='Elapsed Time (hrs):Q'
+      color="#fc4c02"
     )
     st.altair_chart(chart, use_container_width=True)
     
-    #return st.bar_chart(time_by_month, color=["#fc4c02"])
-    
-    #st.bar_chart(time_by_month.set_index("Month")["Elapsed Time (hrs)"], color="#fc4c02")
-    #st.write(time_by_month.head())
-
-    #return st.write(time_by_month.head())
+    #ideal color = "#fc4c02"
   
   def sessions_per_month_graph(data):
     st.subheader("Count by Month")
@@ -127,6 +123,7 @@ if file != None:
     chart = alt.Chart(month_counts).mark_bar().encode(
       x=alt.X('Month:N', sort=months_order),
       y='Count:Q'
+      color="#1ebbd7"
     )
     st.altair_chart(chart, use_container_width=True)
     
