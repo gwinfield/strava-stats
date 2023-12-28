@@ -102,8 +102,13 @@ if file != None:
     time_by_month = data.groupby("Month")["Elapsed Time"].sum().reset_index()
     #return st.bar_chart(time_by_month, color=["#fc4c02"])
     time_by_month["Elapsed Time (hrs)"] = time_by_month["Elapsed Time"] / 60
-    return st.bar_chart(time_by_month.set_index("Month")["Elapsed Time (hrs)"], color="#fc4c02")
+    
+    #st.altair_chart(chart, use_container_width=True)
+    
+    #st.bar_chart(time_by_month.set_index("Month")["Elapsed Time (hrs)"], color="#fc4c02")
     #st.write(time_by_month.head())
+
+    return st.write(time_by_month.head())
   
   def sessions_per_month_graph(data):
     st.subheader("Count by Month")
@@ -117,9 +122,8 @@ if file != None:
       y='Count:Q'
     )
     st.altair_chart(chart, use_container_width=True)
-    #return st.write(month_counts.head())
     
-    #st.bar_chart(month_counts, color=["#1ebbd7"])
+    #ideal color = "#1ebbd7"
 
 
   activities_list = activities['Activity Type'].unique().tolist()
