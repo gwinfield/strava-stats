@@ -10,7 +10,7 @@ st.set_page_config(
   layout = "wide",
 )
 
-st.title("2023 Strava Statistics:athletic_shoe:")
+st.title("2023 Strava Stats:athletic_shoe:")
 st.write("Welcome to your (unofficial form of) Strava Wrapped. Please enjoy your personalized dashboard! Any questions or bugs? Text me or email me at gwinfield@utexas.edu.")
 st.markdown("""---""")
 
