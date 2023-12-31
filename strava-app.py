@@ -84,7 +84,7 @@ if file != None:
   months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
   def time_per_month_graph(data):  #creates graph of time spent by month
-    st.subheader("Time (in hrs) Spent by Month")
+    st.subheader("Time (in hours) Spent by Month")
     time_by_month = data.groupby("Month")["Elapsed Time"].sum().reset_index()
     time_by_month["Elapsed Time (hrs)"] = time_by_month["Elapsed Time"] / 60
     
@@ -95,7 +95,7 @@ if file != None:
     st.altair_chart(chart, use_container_width=True)
   
   def sessions_per_month_graph(data):  #creates graph with sessions per month
-    st.subheader("Count by Month")
+    st.subheader("Number of Sessions by Month")
     month_counts = data.groupby('Activity Type')['Month'].value_counts().reset_index()
     month_counts.columns = ['Activity','Month', 'Count']
     
